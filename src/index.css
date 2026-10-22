@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* shadcn tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Akodefy palette: green is the identity */
+  --color-brand: #19C46B;
+  --color-brand-deep: #0B7A43;
+  --color-forest: #072A1E;
+  --color-forest-2: #0B3B2A;
+  --color-paper: #F3F7F4;
+  --color-ink: #0C1A14;
+}
+
+:root {
+  --radius: 1rem;
+  --background: #F3F7F4;
+  --foreground: #0C1A14;
+  --card: #FFFFFF;
+  --card-foreground: #0C1A14;
+  --popover: #FFFFFF;
+  --popover-foreground: #0C1A14;
+  --primary: #19C46B;
+  --primary-foreground: #072A1E;
+  --secondary: #E3ECE6;
+  --secondary-foreground: #0C1A14;
+  --muted: #E3ECE6;
+  --muted-foreground: #4A5D52;
+  --accent: #E3ECE6;
+  --accent-foreground: #0C1A14;
+  --destructive: #C8321F;
+  --border: rgba(12, 26, 20, 0.14);
+  --input: rgba(12, 26, 20, 0.22);
+  --ring: #19C46B;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-brand); color: var(--color-forest); }
+  :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-paper); }
+  ::-webkit-scrollbar-thumb { background: var(--color-forest-2); border-radius: 6px; }
+}
+
+@utility container-x {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Fallback surface shown until a generated asset is placed in /public/assets */
+.pattern-rings {
+  background:
+    repeating-radial-gradient(circle at 72% 28%, transparent 0 22px, color-mix(in srgb, currentColor 16%, transparent) 22px 23px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

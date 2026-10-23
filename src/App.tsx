@@ -11,6 +11,8 @@ import AboutPage from '@/pages/AboutPage'
 import ServicesPage from '@/pages/ServicesPage'
 import PortfolioPage from '@/pages/PortfolioPage'
 import ContactPage from '@/pages/ContactPage'
+import PricingPage from '@/pages/Pricingpage'
+import CareersPage from '@/pages/CareersPage'
 import { projects } from '@/content/site'
 import { ScrollTrigger } from '@/lib/gsap'
 import { scrollToTop, useSmoothScroll } from '@/lib/lenis'
@@ -57,6 +59,8 @@ function Shell() {
               element={projects.length ? <PortfolioPage /> : <Navigate to="/" replace />}
             />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/careers" element={<CareersPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Page>

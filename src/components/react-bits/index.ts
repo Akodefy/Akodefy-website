@@ -8,4 +8,4 @@ export { default as DecryptedText } from './DecryptedText'
 export { default as CurvedLoop } from './CurvedLoop'
 export { default as ScrollFloat } from './ScrollFloat'
 export { default as CountUp } from './CountUp'
-export { default as ChromaGrid } from './ChromaGrid'
+

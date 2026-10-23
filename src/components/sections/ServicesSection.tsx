@@ -6,7 +6,7 @@ import { gsap, useGSAP } from '@/lib/gsap'
 import { services } from '@/content/site'
 import { cn } from '@/lib/utils'
 
-const themes = ['bg-white text-ink', 'bg-brand text-forest', 'bg-forest text-white']
+const themes = ['bg-ink text-forest', 'bg-brand text-forest', 'bg-emerald-deep text-white']
 
 /**
  * Cards stack as you scroll: each one settles back and darkens while the next slides over it.

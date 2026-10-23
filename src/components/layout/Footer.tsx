@@ -23,7 +23,7 @@ export default function Footer() {
     { scope: root },
   )
 
-  const company = [...nav, { label: 'Contact', to: '/contact' }]
+  const company = [...nav, { label: 'Careers', to: '/careers' }, { label: 'Contact', to: '/contact' }]
 
   return (
     <footer ref={root} className="overflow-hidden bg-forest text-white">
@@ -91,11 +91,12 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div
-        aria-hidden
-        className="ft-mark pointer-events-none select-none whitespace-nowrap text-center font-display text-[clamp(7rem,27vw,30rem)] font-semibold leading-[0.74] tracking-[-0.07em] text-brand/90"
-      >
-        akodefy
+      <div aria-hidden className="relative">
+        <div className="ft-mark pointer-events-none select-none whitespace-nowrap text-center font-display text-[clamp(7rem,27vw,30rem)] font-semibold leading-[0.74] tracking-[-0.07em] text-brand/90">
+          akodefy
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 -bottom-[20%] top-[75%] bg-gradient-to-b from-transparent to-forest/60 backdrop-blur-2xl [mask-image:linear-gradient(to_bottom,transparent,black_55%)]" />
+        <div className="pointer-events-none absolute inset-x-0 -bottom-[20%] top-[86%] backdrop-blur-[64px] [mask-image:linear-gradient(to_bottom,transparent,black_60%)]" />
       </div>
     </footer>
   )

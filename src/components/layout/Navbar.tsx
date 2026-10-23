@@ -20,9 +20,19 @@ export default function Navbar() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="container-x flex items-center justify-between pt-5">
+      {/* Frosted backdrop — invisible at top, slides in on scroll */}
+      <div
+        aria-hidden
+        className={cn(
+          'absolute inset-x-0 top-0 h-28 transition-all duration-500 [mask-image:linear-gradient(to_bottom,black_55%,transparent)]',
+          scrolled
+            ? 'bg-paper/60 backdrop-blur-xl'
+            : 'bg-transparent backdrop-blur-none',
+        )}
+      />
+      <div className="container-x relative flex items-center justify-between pt-5">
         {/* Difference blend keeps the wordmark legible over both the dark hero and light pages */}
-        <Logo className="pointer-events-auto text-white mix-blend-difference" />
+        <Logo className="pointer-events-auto" />
 
         <nav
           aria-label="Primary"

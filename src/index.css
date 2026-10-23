@@ -31,35 +31,45 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Akodefy palette: green is the identity */
-  --color-brand: #19C46B;
-  --color-brand-deep: #0B7A43;
-  --color-forest: #072A1E;
-  --color-forest-2: #0B3B2A;
-  --color-paper: #F3F7F4;
-  --color-ink: #0C1A14;
+  /* Akodefy palette: green-black surfaces, one neon signal green.
+     Token names are unchanged, so every existing class keeps working.
+     paper  = the page itself      (darkest)
+     forest = raised panels, hero, process, footer, CTA
+     forest-2 = one step higher    (CEO section, hero frame)
+     card   = interactive cards    (service card, testimonial cards)
+     ink    = main text (now light)
+     brand  = the neon signal green, used for every action and highlight */
+  --color-brand: #2BFF88;
+  --color-brand-deep: #22E57F;
+  --color-forest: #0C140F;
+  --color-forest-2: #121C16;
+  --color-paper: #050806;
+  --color-ink: #EAF3EC;
+  --color-emerald-deep: #0C2B1C;
+  --color-mint: #B9FFD6;
 }
 
 :root {
+  color-scheme: dark;
   --radius: 1rem;
-  --background: #F3F7F4;
-  --foreground: #0C1A14;
-  --card: #FFFFFF;
-  --card-foreground: #0C1A14;
-  --popover: #FFFFFF;
-  --popover-foreground: #0C1A14;
-  --primary: #19C46B;
-  --primary-foreground: #072A1E;
-  --secondary: #E3ECE6;
-  --secondary-foreground: #0C1A14;
-  --muted: #E3ECE6;
-  --muted-foreground: #4A5D52;
-  --accent: #E3ECE6;
-  --accent-foreground: #0C1A14;
-  --destructive: #C8321F;
-  --border: rgba(12, 26, 20, 0.14);
-  --input: rgba(12, 26, 20, 0.22);
-  --ring: #19C46B;
+  --background: #050806;
+  --foreground: #EAF3EC;
+  --card: #16221B;
+  --card-foreground: #EAF3EC;
+  --popover: #121C16;
+  --popover-foreground: #EAF3EC;
+  --primary: #2BFF88;
+  --primary-foreground: #04120A;
+  --secondary: #16221B;
+  --secondary-foreground: #EAF3EC;
+  --muted: #16221B;
+  --muted-foreground: #8FA396;
+  --accent: #1B2A21;
+  --accent-foreground: #EAF3EC;
+  --destructive: #FF6B6B;
+  --border: rgba(234, 243, 236, 0.12);
+  --input: rgba(234, 243, 236, 0.2);
+  --ring: #2BFF88;
 }
 
 @layer base {
@@ -70,11 +80,11 @@
   }
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
-  ::selection { background: var(--color-brand); color: var(--color-forest); }
+  ::selection { background: var(--color-brand); color: #04120A; }
   :focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--color-paper); }
-  ::-webkit-scrollbar-thumb { background: var(--color-forest-2); border-radius: 6px; }
+  ::-webkit-scrollbar-thumb { background: #24352B; border-radius: 6px; }
 }
 
 @utility container-x {

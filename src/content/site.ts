@@ -41,6 +41,7 @@ export const projects: Project[] = []
 export const nav = [
   { label: 'Services', to: '/services' },
   { label: 'About', to: '/about' },
+  { label: 'Pricing', to: '/pricing' },
   ...(projects.length ? [{ label: 'Portfolio', to: '/portfolio' }] : []),
 ]
 
@@ -205,3 +206,318 @@ export const techRows: string[][] = [
   ['React', 'Next.js', 'TypeScript', 'Node.js', 'React Native', 'Flutter', 'Figma', 'Python', 'AWS', 'Firebase', 'GSAP', 'Framer'],
   ['PostgreSQL', 'MongoDB', 'GraphQL', 'Docker', 'Tailwind', 'Stripe', 'TensorFlow', 'Redis', 'Cloudflare', 'Supabase', 'Prisma', 'Vercel'],
 ]
+
+export type PricingPlan = {
+  name: string
+  blurb: string
+  price: string
+  unit: string
+  featured?: boolean
+  features: string[]
+  cta: { label: string; to: string }
+}
+export type PricingRow = { label: string; values: [boolean | string, boolean | string, boolean | string] }
+export type PricingSection = { title: string; rows: PricingRow[] }
+ 
+/**
+ * Draft. The three budget ranges are the ones already on your contact form.
+ * The plan names, what sits in each plan and the table rows are a first structure built
+ * from your existing services and process copy: confirm or edit every row before launch.
+ */
+export const pricing = {
+  title: 'Transparent pricing, no hidden costs',
+  sub: 'Pick the budget range closest to your project and we’ll respond with a tailored plan.',
+  info: {
+    title: 'Budget',
+    points: [
+      'Transparent pricing, no hidden costs',
+      'Two-week sprints with Friday demos',
+      'A dedicated PM and dev lead on every project',
+    ],
+    note: 'Ranges are in US dollars.',
+  },
+  plans: [
+    {
+      name: 'Launch',
+      blurb: 'A focused build to get you to market',
+      price: '$5k–$10k',
+      unit: 'per project',
+      features: [
+        'One service area',
+        'Lean MVP scope',
+        'Dedicated PM and dev lead',
+        'Two-week sprints with Friday demos',
+        'Zero-downtime deployment',
+      ],
+      cta: { label: 'Start a project', to: '/contact' },
+    },
+    {
+      name: 'Growth',
+      blurb: 'For products and campaigns that need to scale',
+      price: '$10k–$25k',
+      unit: 'per project',
+      featured: true,
+      features: [
+        'Up to two service areas',
+        'Production-ready product',
+        'Dedicated PM and dev lead',
+        'Two-week sprints with Friday demos',
+        'SEO and Core Web Vitals built in',
+        'KPI benchmarking after launch',
+      ],
+      cta: { label: 'Start a project', to: '/contact' },
+    },
+    {
+      name: 'Scale',
+      blurb: 'Enterprise platforms and multi-service programmes',
+      price: '$25k+',
+      unit: 'let’s talk',
+      features: [
+        'Multiple service areas',
+        'Enterprise platforms',
+        'Cloud architecture and security audits',
+        'Digital transformation roadmapping',
+        'Dedicated PM and dev lead',
+        'KPI benchmarking after launch',
+      ],
+      cta: { label: 'Talk to us', to: '/contact' },
+    },
+  ] as PricingPlan[],
+  sections: [
+    {
+      title: 'Scope',
+      rows: [
+        { label: 'Service areas', values: ['One', 'Up to two', 'Multiple'] },
+        { label: 'Typical project size', values: ['Lean MVP', 'Production product', 'Enterprise platform'] },
+        { label: 'Web and mobile products', values: [true, true, true] },
+        { label: 'UI/UX design in Figma', values: [true, true, true] },
+        { label: 'SEO, paid media and conversion work', values: [false, true, true] },
+        { label: 'Growth analytics and A/B testing', values: [false, true, true] },
+        { label: 'Cloud architecture and security audits', values: [false, false, true] },
+        { label: 'Digital transformation roadmapping', values: [false, false, true] },
+      ],
+    },
+    {
+      title: 'How we work',
+      rows: [
+        { label: 'Dedicated PM and dev lead', values: [true, true, true] },
+        { label: 'Two-week sprints with Friday demos', values: [true, true, true] },
+        { label: 'Discover, Design, Build, Launch', values: [true, true, true] },
+        { label: 'SEO and Core Web Vitals built in', values: [true, true, true] },
+        { label: 'Zero-downtime deployment', values: [true, true, true] },
+        { label: 'Post-launch monitoring', values: [true, true, true] },
+        { label: 'KPI benchmarking', values: [false, true, true] },
+      ],
+    },
+    {
+      title: 'Budget and next step',
+      rows: [
+        { label: 'Budget range (USD)', values: ['$5k–$10k', '$10k–$25k', '$25k+'] },
+        { label: 'A tailored plan from our team', values: [true, true, true] },
+        { label: 'Transparent pricing, no hidden costs', values: [true, true, true] },
+      ],
+    },
+  ] as PricingSection[],
+  faqTitle: 'Questions about pricing',
+  faq: [
+    {
+      q: 'How do I get an exact quote?',
+      a: 'Tell us about your project through the contact form and we’ll respond with a tailored plan. The ranges above are budget guides.',
+    },
+    {
+      q: 'Are there any hidden costs?',
+      a: 'No. Our pricing is transparent, with no hidden costs.',
+    },
+    {
+      q: 'What does a project look like week to week?',
+      a: 'Work runs in two-week sprints with a demo every Friday, so you always know where your product is. A dedicated PM and dev lead stay with your project throughout.',
+    },
+    {
+      q: 'What is included at launch?',
+      a: 'Zero-downtime deployment, post-launch monitoring, and KPI benchmarking.',
+    },
+    {
+      q: 'Can I combine services?',
+      a: 'Yes. We cover web development, mobile app development, digital marketing, growth and analytics, UI/UX design and IT consulting, and a plan can span more than one of them.',
+    },
+    {
+      q: 'Is SEO included?',
+      a: 'SEO and Core Web Vitals are built in from day one.',
+    },
+  ],
+}
+
+export type JobRole = {
+  id: string
+  title: string
+  department: string
+  location: string
+  type: string
+  experience: string
+  description: string
+  responsibilities: string[]
+  requirements: string[]
+}
+
+export const careers = {
+  title: 'Build the future with us.',
+  sub: 'We are a team of engineers, designers, and strategists who care about craft, outcomes, and each other.',
+
+  why: {
+    title: 'Why Akodefy',
+    points: [
+      {
+        label: 'Meaningful work',
+        text: 'Every project we take on solves a real problem for a real business. You will see the impact of your work within weeks, not years.',
+      },
+      {
+        label: 'Craft-first culture',
+        text: 'We believe in doing things properly. Code is reviewed, designs are iterated, and shipping something mediocre is not an option.',
+      },
+      {
+        label: 'Ownership and trust',
+        text: 'You own your domain. No micromanagement — just clear goals, the resources you need, and the autonomy to get there.',
+      },
+      {
+        label: 'Transparent growth',
+        text: 'Biannual reviews with clear levelling criteria. No hidden ladders, no politics — just consistent performance and visible progress.',
+      },
+    ],
+  },
+
+  perks: [
+    { label: 'Flexible hours', text: 'Core overlap, async-friendly. We care about output, not clock-in times.' },
+    { label: 'Remote-first', text: 'Work from anywhere. We have team members across India and beyond.' },
+    { label: 'Learning budget', text: 'Annual budget for courses, books, and conferences of your choice.' },
+    { label: 'Health cover', text: 'Comprehensive health insurance for you and your immediate family.' },
+    { label: 'Equity potential', text: 'Tenured team members are eligible for an equity programme as we scale.' },
+    { label: 'Friday demos', text: 'The whole company ships and shows work every two weeks. No silos, full context.' },
+  ],
+
+  values: [
+    { label: 'Relentless quality', text: 'Good enough is not in our vocabulary.' },
+    { label: 'Radical candour', text: 'Honest feedback, delivered with care.' },
+    { label: 'Client obsession', text:"We measure success by the client's outcomes." },
+    { label: 'Continuous learning', text: 'Curiosity is a core competency here.' },
+  ],
+
+  openRoles: [
+    {
+      id: 'sr-frontend-engineer',
+      title: 'Senior Frontend Engineer',
+      department: 'Engineering',
+      location: 'Coimbatore / Remote',
+      type: 'Full-time',
+      experience: '4+ years',
+      description:
+        'You will be the technical lead on client-facing web products — from architecture decisions to pixel-level implementation. You care about performance, accessibility, and a codebase that the next person will enjoy inheriting.',
+      responsibilities: [
+        'Architect and build high-performance React and Next.js applications',
+        'Set and uphold frontend code quality standards across the team',
+        'Collaborate with designers to deliver pixel-precise, accessible interfaces',
+        'Optimise Core Web Vitals and SEO technical requirements from day one',
+        'Mentor mid-level engineers through code review and pair programming',
+        'Contribute to tooling, CI pipelines, and engineering documentation',
+      ],
+      requirements: [
+        'Deep expertise in React, TypeScript, and modern CSS',
+        'Strong understanding of browser performance and Core Web Vitals',
+        'Experience with Next.js App Router and server components',
+        'Familiarity with animation libraries such as GSAP or Framer Motion',
+        'Track record of owning features end-to-end in a product environment',
+        'Clear written and verbal communication skills',
+      ],
+    },
+    {
+      id: 'product-designer',
+      title: 'Product Designer',
+      department: 'Design',
+      location: 'Coimbatore / Remote',
+      type: 'Full-time',
+      experience: '3+ years',
+      description:
+        'You will own the design of client products from discovery through delivery. You are equally comfortable in a whiteboard session and pixel-pushing in Figma, and you understand that great design is measured by business outcomes, not Dribbble likes.',
+      responsibilities: [
+        'Lead UX research, user journey mapping, and information architecture',
+        'Produce wireframes, prototypes, and high-fidelity Figma deliverables',
+        'Define and maintain component libraries and design systems',
+        'Work directly with clients to gather feedback and iterate quickly',
+        'Collaborate with engineers to ensure pixel-precise implementation',
+        'Advocate for the user in every product and business decision',
+      ],
+      requirements: [
+        'A strong portfolio demonstrating shipped product work',
+        'Advanced Figma skills including auto-layout, variables, and prototyping',
+        'Experience conducting user research and synthesising findings',
+        'Understanding of frontend development constraints and possibilities',
+        'Ability to design for accessibility (WCAG 2.1 AA)',
+        'Excellent taste and a passion for interaction details',
+      ],
+    },
+    {
+      id: 'digital-marketing-strategist',
+      title: 'Digital Marketing Strategist',
+      department: 'Growth',
+      location: 'Coimbatore / Remote',
+      type: 'Full-time',
+      experience: '3+ years',
+      description:
+        'You will design and execute data-driven digital marketing strategies for our clients across SEO, paid media, and conversion optimisation. You connect campaigns directly to revenue, and you are as comfortable in a spreadsheet as you are writing a brief.',
+      responsibilities: [
+        'Build and manage SEO, Google Ads, and Meta campaigns for multiple clients',
+        'Conduct market and competitor analysis to shape growth strategy',
+        'Define KPIs, set up tracking, and report on performance with full transparency',
+        'Run A/B and multivariate tests to continuously improve conversion rates',
+        'Brief the design and content teams to produce campaign assets',
+        'Stay current with algorithm changes, platform updates, and industry trends',
+      ],
+      requirements: [
+        'Proven track record driving measurable revenue growth through digital channels',
+        'Deep expertise in Google Ads, Meta Business Suite, and SEO tools',
+        'Strong analytical skills with experience in GA4, Search Console, and Looker Studio',
+        'Experience with conversion rate optimisation and landing page testing',
+        'Excellent written communication and client-facing skills',
+        'Google Ads and Meta Blueprint certifications are a plus',
+      ],
+    },
+    {
+      id: 'react-native-engineer',
+      title: 'React Native Engineer',
+      department: 'Engineering',
+      location: 'Coimbatore / Remote',
+      type: 'Full-time',
+      experience: '3+ years',
+      description:
+        'You will build native-quality cross-platform mobile applications that users return to. Performance, polish, and reliability are non-negotiable — you understand how to make React Native feel genuinely native.',
+      responsibilities: [
+        'Build and ship cross-platform iOS and Android applications in React Native',
+        'Implement performant animations and gesture-driven interactions',
+        'Integrate REST and GraphQL APIs, push notifications, and device APIs',
+        'Write automated tests and maintain a CI/CD pipeline for mobile releases',
+        'Conduct App Store and Play Store release management',
+        'Collaborate closely with designers to achieve native interaction quality',
+      ],
+      requirements: [
+        'Production experience with React Native and Expo',
+        'Understanding of native modules and bridging when required',
+        'Familiarity with Reanimated 3 and Gesture Handler',
+        'Experience submitting apps to the App Store and Google Play',
+        'Strong TypeScript skills',
+        'Attention to performance profiling and memory management',
+      ],
+    },
+  ] as JobRole[],
+
+  applicationProcess: [
+    { no: '01', title: 'Apply', desc: 'Submit your application below. We read every submission personally — no automated filters.' },
+    { no: '02', title: 'Intro call', desc: 'A 30-minute conversation with the hiring manager to learn about each other and align on expectations.' },
+    { no: '03', title: 'Skills review', desc: 'A relevant, paid work sample or technical interview — scoped to two hours maximum.' },
+    { no: '04', title: 'Team meet', desc: 'You meet the team you would work with day-to-day and ask every question you need to ask.' },
+    { no: '05', title: 'Offer', desc: 'A clear, transparent offer with no negotiation games. We make our best offer first.' },
+  ],
+
+  openToAll: {
+    title: 'Not the right role?',
+    text: 'We are always open to exceptional people. If you do not see a role that fits but believe you belong at Akodefy, send a speculative application.',
+  },
+}

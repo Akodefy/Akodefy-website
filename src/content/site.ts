@@ -197,3 +197,11 @@ export const testimonials: Testimonial[] = [
 // Animated counters. Empty on purpose: the section stays hidden until you add numbers you can stand behind.
 // Example: { value: 8, suffix: '+', label: 'Years building' }
 export const stats: Stat[] = []
+
+export const techHeading = 'Technologies we ship with'
+ 
+// Carried over from the previous akodefy.com. Edit so it lists only what you genuinely use.
+export const techRows: string[][] = [
+  ['React', 'Next.js', 'TypeScript', 'Node.js', 'React Native', 'Flutter', 'Figma', 'Python', 'AWS', 'Firebase', 'GSAP', 'Framer'],
+  ['PostgreSQL', 'MongoDB', 'GraphQL', 'Docker', 'Tailwind', 'Stripe', 'TensorFlow', 'Redis', 'Cloudflare', 'Supabase', 'Prisma', 'Vercel'],
+]

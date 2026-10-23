@@ -1,9 +1,9 @@
-import { ScrollReveal } from '@/components/rb'
+import { ScrollReveal } from '@/components/react-bits'
 import { statement } from '@/content/site'
 
 export default function StatementSection() {
   return (
-    <section className="bg-paper pb-32 pt-20 md:pb-52 md:pt-32">
+    <section className="bg-paper pb-16 pt-10 md:pb-24 md:pt-16">
       <div className="container-x">
         <ScrollReveal
           baseOpacity={0.1}

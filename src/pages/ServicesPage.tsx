@@ -1,7 +1,7 @@
-import PageHero from '@/components/PageHero'
-import ServicesSection from '@/components/ServicesSection'
-import ProcessSection from '@/components/ProcessSection'
-import CTASection from '@/components/CTASection'
+import PageHero from '@/components/common/PageHero'
+import ServicesSection from '@/components/sections/ServicesSection'
+import ProcessSection from '@/components/sections/ProcessSection'
+import CTASection from '@/components/sections/CTASection'
 import { pages } from '@/content/site'
 
 export default function ServicesPage() {

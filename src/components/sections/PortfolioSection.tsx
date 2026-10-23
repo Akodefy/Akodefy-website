@@ -1,4 +1,4 @@
-import Asset from '@/components/Asset'
+import Asset from '@/components/common/Asset'
 import { projects } from '@/content/site'
 
 /** Renders only real projects from content/site.ts. Empty list renders nothing. */

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import Logo from './Logo'
+import Logo from '@/components/common/Logo'
 import { nav } from '@/content/site'
 import { cn } from '@/lib/utils'
 

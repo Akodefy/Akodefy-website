@@ -1,9 +1,9 @@
-import PageHero from '@/components/PageHero'
-import ValuesPinSection from '@/components/ValuesPinSection'
-import AboutSection from '@/components/AboutSection'
-import StatsSection from '@/components/StatsSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import CTASection from '@/components/CTASection'
+import PageHero from '@/components/common/PageHero'
+import ValuesPinSection from '@/components/sections/ValuesPinSection'
+import AboutSection from '@/components/sections/AboutSection'
+import StatsSection from '@/components/sections/StatsSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import CTASection from '@/components/sections/CTASection'
 import { about } from '@/content/site'
 
 export default function AboutPage() {

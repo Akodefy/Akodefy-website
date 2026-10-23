@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import PageHero from '@/components/PageHero'
+import PageHero from '@/components/common/PageHero'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'

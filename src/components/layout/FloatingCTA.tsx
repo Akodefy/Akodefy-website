@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight } from './icons'
+import { ArrowUpRight } from '@/components/common/icons'
 
 export default function FloatingCTA() {
   const { pathname } = useLocation()

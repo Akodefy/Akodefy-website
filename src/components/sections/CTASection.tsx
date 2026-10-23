@@ -1,6 +1,6 @@
-import { DotGrid, Magnet } from '@/components/rb'
-import SplitHeading from '@/components/SplitHeading'
-import ButtonLink from '@/components/ButtonLink'
+import { DotGrid, Magnet } from '@/components/react-bits'
+import SplitHeading from '@/components/common/SplitHeading'
+import ButtonLink from '@/components/common/ButtonLink'
 import { cta } from '@/content/site'
 
 export default function CTASection() {

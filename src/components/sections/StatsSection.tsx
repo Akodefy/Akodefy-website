@@ -1,4 +1,4 @@
-import { CountUp } from '@/components/rb'
+import { CountUp } from '@/components/react-bits'
 import { stats } from '@/content/site'
 
 /** Renders nothing until verified numbers are added to `stats` in content/site.ts. */

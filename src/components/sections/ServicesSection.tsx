@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { DecryptedText } from '@/components/rb'
-import Asset from '@/components/Asset'
+import { DecryptedText } from '@/components/react-bits'
+import Asset from '@/components/common/Asset'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { services } from '@/content/site'
 import { cn } from '@/lib/utils'
@@ -29,7 +29,7 @@ export default function ServicesSection({ showHeader = true }: { showHeader?: bo
   )
 
   return (
-    <section ref={root} className="bg-paper pb-24 pt-12 md:pb-40 md:pt-20">
+    <section ref={root} className="bg-paper pb-24 pt-6 md:pb-40 md:pt-10">
       <div className="container-x">
         {showHeader && (
           <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">

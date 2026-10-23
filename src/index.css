@@ -106,3 +106,33 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Performance: GPU compositing hints ────────────────────────────────────────
+   Elements that GSAP will transform/opacity-animate get a compositor layer.
+   This tells the browser ahead of time so it doesn't need to promote on-the-fly.
+   Only applied where we know transforms will run. */
+.hero-frame,
+.hero-copy,
+.hero-frame-wrap,
+.ceo-tilt,
+.ceo-float {
+  will-change: transform;
+}
+
+/* ── Performance: Layout containment ──────────────────────────────────────────
+   IMPORTANT: Do NOT add contain to sections that have sticky/pinned children
+   (ValuesPinSection, ProcessSection) — contain breaks position:sticky.
+   Use .contain-section only on fully self-contained sections. */
+.contain-section {
+  contain: layout style;
+}
+
+
+/* ── Performance: below-fold deferred render ──────────────────────────────────
+   content-visibility:auto lets the browser skip rendering off-screen sections.
+   We exclude the hero and the section immediately below the fold. */
+.below-fold {
+  content-visibility: auto;
+  /* Reserve approximate height so scroll position stays stable */
+  contain-intrinsic-size: auto 500px;
+}

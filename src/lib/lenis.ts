@@ -14,12 +14,16 @@ export function scrollToTop() {
 export function useSmoothScroll() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 })
+    const lenis = new Lenis({
+      lerp: 0.1,          // slightly more responsive than 0.09 — feels snappier on low-end devices
+      wheelMultiplier: 1, // native-feeling scroll speed
+      syncTouch: false,   // let native momentum handle touch — significantly faster on mobile
+    })
     instance = lenis
     lenis.on('scroll', ScrollTrigger.update)
     const tick = (time: number) => lenis.raf(time * 1000)
     gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.lagSmoothing(500, 33) // absorb tab-switch / background spikes gracefully
     return () => {
       gsap.ticker.remove(tick)
       lenis.destroy()

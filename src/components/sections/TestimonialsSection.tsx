@@ -86,6 +86,7 @@ export default function TestimonialsSection() {
       let lastX = 0
       let dragging = false
       let hovering = false
+      let inView = false
 
       const measure = () => {
         W = tr.scrollWidth / 2 // two identical halves
@@ -94,19 +95,26 @@ export default function TestimonialsSection() {
       document.fonts.ready.then(measure)
       window.addEventListener('resize', measure)
 
-      const setX = gsap.quickSetter(tr, 'x', 'px')
+      // Pause ticker when section is off-screen — saves GPU on every other page
+      const visObs = new IntersectionObserver(
+        ([e]) => { inView = e.isIntersecting },
+        { rootMargin: '100px' },
+      )
+      visObs.observe(vp)
+
       gsap.set(bb, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 })
       const bx = gsap.quickTo(bb, 'x', { duration: 0.35, ease: 'power3' })
       const by = gsap.quickTo(bb, 'y', { duration: 0.35, ease: 'power3' })
 
       const tick = (_time: number, deltaTime: number) => {
+        if (!inView) return
         const d = deltaTime / 16.667
         if (!dragging) {
           x += (-auto * (hovering ? 0.35 : 1) + v) * d
           v *= Math.pow(0.92, d)
         }
         if (W) x = gsap.utils.wrap(-W, 0, x)
-        setX(x)
+        tr.style.transform = `translateX(${x}px)`
       }
       gsap.ticker.add(tick)
 
@@ -159,6 +167,7 @@ export default function TestimonialsSection() {
 
       return () => {
         gsap.ticker.remove(tick)
+        visObs.disconnect()
         window.removeEventListener('resize', measure)
         vp.removeEventListener('pointerdown', down)
         vp.removeEventListener('pointermove', move)

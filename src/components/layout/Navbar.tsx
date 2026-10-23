@@ -10,10 +10,20 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 40)
+    let raf = 0
+    const on = () => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        raf = 0
+        setScrolled(window.scrollY > 40)
+      })
+    }
     on()
     window.addEventListener('scroll', on, { passive: true })
-    return () => window.removeEventListener('scroll', on)
+    return () => {
+      window.removeEventListener('scroll', on)
+      cancelAnimationFrame(raf)
+    }
   }, [])
 
   const mobileLinks = [...nav, { label: 'Contact', to: '/contact' }]

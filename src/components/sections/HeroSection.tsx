@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { GhostFibers } from '@/components/rb'
 import SplitHeading from '@/components/common/SplitHeading'
 import ButtonLink from '@/components/common/ButtonLink'
@@ -7,8 +7,22 @@ import { gsap } from '@/lib/gsap'
 import { whenReady } from '@/lib/ready'
 import { hero } from '@/content/site'
 
+// True when viewport <768px or the pointer is coarse (touch device).
+function useLowPerfDevice() {
+  const [low, setLow] = useState(false)
+  useEffect(() => {
+    const check = () =>
+      setLow(window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches)
+    check()
+    window.addEventListener('resize', check, { passive: true })
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return low
+}
+
 export default function HeroSection() {
   const root = useRef<HTMLElement>(null)
+  const lowPerf = useLowPerfDevice()
 
   useEffect(() => {
     let cancelled = false
@@ -74,14 +88,20 @@ export default function HeroSection() {
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <GhostFibers
               glowColor="#2BFF88"
-              layers={3}
+              /* Low-power mode: fewer threads, layers and no particles → ~50% less GPU work */
+              layers={lowPerf ? 2 : 3}
+              threads={lowPerf ? 36 : 60}
+              dpr={lowPerf ? 1 : undefined}
+              particles={lowPerf ? 0 : 0.5}
+              sparkle={lowPerf ? 0 : 0.5}
+              hoverEffect={lowPerf ? 'none' : 'focus'}
+              mouseInteraction={!lowPerf}
+              pulseOnClick={!lowPerf}
+              /* Shared props */
               twist={1.2}
-              threads={72}
               fiberStyle="dots"
               depthOfField={0.85}
-              hoverEffect="focus"
               intro
-              mouseInteraction
               lineColor="#D8FFE9"
               secondaryColor="#0E9F5B"
               gradient="depth"
@@ -99,14 +119,11 @@ export default function HeroSection() {
               flow={0.4}
               rollSpeed={0.15}
               focusDepth={0}
-              particles={0.5}
-              sparkle={0.5}
               glow={0.8}
               brightness={1.5}
               vignette={0.3}
               grain={0.06}
               mouseStrength={1}
-              pulseOnClick
               lightMode={false}
             />
           </div>

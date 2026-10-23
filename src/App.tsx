@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { TargetCursor } from '@/components/react-bits'
@@ -6,17 +6,21 @@ import Loader from '@/components/layout/Loader'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingCTA from '@/components/layout/FloatingCTA'
+// Home is eager — it's the landing page, we want it in the initial bundle.
 import Home from '@/pages/Home'
-import AboutPage from '@/pages/AboutPage'
-import ServicesPage from '@/pages/ServicesPage'
-import PortfolioPage from '@/pages/PortfolioPage'
-import ContactPage from '@/pages/ContactPage'
-import PricingPage from '@/pages/Pricingpage'
-import CareersPage from '@/pages/CareersPage'
 import { projects } from '@/content/site'
 import { ScrollTrigger } from '@/lib/gsap'
 import { scrollToTop, useSmoothScroll } from '@/lib/lenis'
 import { markReady } from '@/lib/ready'
+
+// All other pages are lazy-loaded: they split into separate JS chunks that are
+// only fetched when the user navigates to them. This saves ~40–60 kB on first load.
+const AboutPage = lazy(() => import('@/pages/AboutPage'))
+const ServicesPage = lazy(() => import('@/pages/ServicesPage'))
+const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'))
+const ContactPage = lazy(() => import('@/pages/ContactPage'))
+const PricingPage = lazy(() => import('@/pages/Pricingpage'))
+const CareersPage = lazy(() => import('@/pages/CareersPage'))
 
 const INTRO_KEY = 'akodefy-intro-seen'
 const wipe = [0.76, 0, 0.24, 1] as const
@@ -50,19 +54,22 @@ function Shell() {
       <Navbar />
       <AnimatePresence mode="wait" initial={false} onExitComplete={scrollToTop}>
         <Page key={location.pathname}>
-          <Routes location={location}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route
-              path="/portfolio"
-              element={projects.length ? <PortfolioPage /> : <Navigate to="/" replace />}
-            />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          {/* Suspense fallback is invisible — the page-wipe animation covers the transition */}
+          <Suspense fallback={null}>
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route
+                path="/portfolio"
+                element={projects.length ? <PortfolioPage /> : <Navigate to="/" replace />}
+              />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
         </Page>
       </AnimatePresence>
       <Footer />

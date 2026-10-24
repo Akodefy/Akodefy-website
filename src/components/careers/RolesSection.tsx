@@ -93,7 +93,7 @@ export default function RolesSection({ onApply }: { onApply: (role: JobRole | nu
   )
 
   return (
-    <section ref={root} id="open-roles" className="bg-paper py-24 md:py-40">
+    <section ref={root} id="open-roles" className="overflow-hidden bg-paper py-16 md:py-28">
       <div className="container-x">
         {/* Header + filter */}
         <div className="cr-header mb-12 flex flex-wrap items-end justify-between gap-8 md:mb-16">

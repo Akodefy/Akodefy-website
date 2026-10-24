@@ -2,13 +2,6 @@ import { useRef } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { careers } from '@/content/site'
 
-/**
- * Perks & benefits.
- * Layout: brand-green background, editorial two-column list.
- *   Each perk is a large label + small description, divided by hairlines.
- *   Even/odd columns are offset vertically by padding to create visual rhythm.
- * Animation: scale + opacity reveal per item — different from clip-path and x-slides elsewhere.
- */
 export default function PerksSection() {
   const root = useRef<HTMLElement>(null)
   const left = careers.perks.filter((_, i) => i % 2 === 0)
@@ -38,7 +31,7 @@ export default function PerksSection() {
   )
 
   return (
-    <section ref={root} className="bg-brand py-24 text-forest md:py-40">
+    <section ref={root} className="overflow-hidden bg-brand py-16 text-forest md:py-28">
       <div className="container-x">
         <div className="mb-16 flex flex-wrap items-end justify-between gap-6 md:mb-24">
           <div>

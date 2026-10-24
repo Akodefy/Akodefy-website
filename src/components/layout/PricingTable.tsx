@@ -65,7 +65,7 @@ export default function PricingTable() {
   )
 
   return (
-    <section ref={root} className="bg-paper pb-24 md:pb-40">
+    <section ref={root} className="bg-paper pb-12 md:pb-20">
       <div className="container-x">
         <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-forest">
           {/* Plan columns */}

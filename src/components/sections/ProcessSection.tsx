@@ -25,7 +25,7 @@ export default function ProcessSection() {
   )
 
   return (
-    <section ref={root} className="bg-forest py-28 text-white md:py-44">
+    <section ref={root} className="bg-forest py-16 text-white md:py-24">
       <div className="container-x grid gap-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <h2 className="font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em] md:sticky md:top-32">

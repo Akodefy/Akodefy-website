@@ -183,7 +183,7 @@ export default function TestimonialsSection() {
   if (!testimonials.length) return null
 
   return (
-    <section ref={root} className="overflow-hidden bg-paper pt-24 pb-4 md:pt-40 md:pb-6">
+    <section ref={root} className="overflow-hidden bg-paper pt-14 pb-4 md:pt-20 md:pb-6">
       <div className="container-x text-center">
         <SplitHeading
           text={testimonialsHeading}

@@ -2,15 +2,6 @@ import { useRef } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { careers } from '@/content/site'
 
-/**
- * Hiring process.
- * Layout: each step is a full-width row with a MASSIVE ghost step number behind the content.
- *   Odd steps: number left, text right.
- *   Even steps: number right, text left.
- * This zig-zag with ghost numbers is entirely different from ProcessSection's
- * vertical scroll-driven timeline.
- * Animation: steps slide in from alternating x directions as they enter the viewport.
- */
 export default function HiringSteps() {
   const root = useRef<HTMLElement>(null)
 

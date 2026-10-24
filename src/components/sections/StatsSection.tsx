@@ -6,7 +6,7 @@ export default function StatsSection() {
   if (!stats.length) return null
 
   return (
-    <section className="bg-paper py-20 md:py-32">
+    <section className="bg-paper py-12 md:py-20">
       <div className="container-x grid gap-12 border-t border-border pt-12 md:grid-cols-[repeat(auto-fit,minmax(12rem,1fr))]">
         {stats.map((s) => (
           <div key={s.label}>

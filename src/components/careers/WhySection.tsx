@@ -37,7 +37,7 @@ export default function WhySection() {
   )
 
   return (
-    <section ref={root} className="bg-forest py-24 text-white md:py-40">
+    <section ref={root} className="overflow-hidden bg-forest py-16 text-white md:py-28">
       <div className="container-x">
         <p className="cw-label mb-16 text-sm font-semibold uppercase tracking-[0.14em] text-brand md:mb-24">
           {careers.why.title}

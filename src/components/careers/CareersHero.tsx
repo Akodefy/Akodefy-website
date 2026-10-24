@@ -76,8 +76,8 @@ export default function CareersHero() {
 
         {/* Headline — two lines animate independently */}
         <div className="ch-headline mt-10 flex-1 flex items-center">
-          <h1 className="font-display font-semibold leading-[0.86] tracking-[-0.06em]"
-            style={{ fontSize: 'clamp(4.5rem, 13vw, 16rem)' }}>
+          <h1 className="font-display font-semibold leading-[0.86] tracking-[-0.06em] max-w-full"
+            style={{ fontSize: 'clamp(3rem, 17vw, 16rem)' }}>
             <span className="ch-line block [clip-path:inset(0_0_100%_0)]">We're</span>
             <span className="ch-line block text-brand [clip-path:inset(0_0_100%_0)]">hiring.</span>
           </h1>

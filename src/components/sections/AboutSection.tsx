@@ -3,7 +3,7 @@ import { about } from '@/content/site'
 
 export default function AboutSection({ showLink = false }: { showLink?: boolean }) {
   return (
-    <section className="bg-paper py-24 md:py-40">
+    <section className="bg-paper py-14 md:py-24">
       <div className="container-x grid gap-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">

@@ -2,7 +2,7 @@ import SplitHeading from './SplitHeading'
 
 export default function PageHero({ title, sub }: { title: string; sub?: string }) {
   return (
-    <section className="bg-paper pb-20 pt-40 md:pb-28 md:pt-56">
+    <section className="bg-paper pb-16 pt-28 md:pb-20 md:pt-36">
       <div className="container-x">
         <SplitHeading
           as="h1"

@@ -101,7 +101,7 @@ export default function App() {
     try {
       sessionStorage.setItem(INTRO_KEY, '1')
     } catch {
-      /* storage unavailable: intro simply plays again next visit */
+      /* storage unavailable */
     }
     setLoading(false)
   }

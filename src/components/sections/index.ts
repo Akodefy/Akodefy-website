@@ -12,4 +12,4 @@ export { default as StatsSection } from './StatsSection'
 export { default as TechMarquee } from './TechMarquee'
 export { default as TestimonialsSection } from './TestimonialsSection'
 export { default as ValuesPinSection } from './ValuesPinSection'
-
+export { default as PartnersSection } from './Partnerssection'

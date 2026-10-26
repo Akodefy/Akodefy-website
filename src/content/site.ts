@@ -521,3 +521,30 @@ export const careers = {
     text: 'We are always open to exceptional people. If you do not see a role that fits but believe you belong at Akodefy, send a speculative application.',
   },
 }
+export const partnersHeading = 'Our trusted partners'
+export type PartnerTile = 'dark' | 'black' | 'navy' | 'light'
+export type PartnerMode = 'mono' | 'gray'
+export type Partner = { name: string; logo: string; tile: PartnerTile; mode: PartnerMode }
+export const partners: Partner[] = [
+  { name: 'Aachi Agencies',          logo: '/assets/partners/aachi-agencies.webp',        tile: 'light', mode: 'mono' },
+  { name: 'AGS Interiors',           logo: '/assets/partners/ags-interiors.webp',          tile: 'dark',  mode: 'gray' },
+  { name: 'AVFX Trade',              logo: '/assets/partners/avfx-trade.webp',             tile: 'black', mode: 'gray' },
+  { name: 'Big Mishra',              logo: '/assets/partners/big-mishra.webp',             tile: 'light', mode: 'mono' },
+  { name: 'DJ MD',                   logo: '/assets/partners/dj-md.webp',                  tile: 'black', mode: 'gray' },
+  { name: 'Dumbledore Travel',       logo: '/assets/partners/dumbledore-travel.webp',      tile: 'black', mode: 'gray' },
+  { name: 'Galaxy Sports',           logo: '/assets/partners/galaxy-sports.webp',          tile: 'navy',  mode: 'mono' },
+  { name: 'Hipple Travels',          logo: '/assets/partners/hipple-travels.webp',         tile: 'light', mode: 'mono' },
+  { name: 'Hydra Water Tech',        logo: '/assets/partners/hydra-water-tech.webp',       tile: 'light', mode: 'mono' },
+  { name: 'Infantry Automak',        logo: '/assets/partners/infantry-automak.webp',       tile: 'navy',  mode: 'gray' },
+  { name: 'Kreativ Studio',          logo: '/assets/partners/kreativ-studio.webp',         tile: 'light', mode: 'mono' },
+  { name: 'Nexus FX',               logo: '/assets/partners/nexus-fx.webp',               tile: 'navy',  mode: 'mono' },
+  { name: 'Prema Boutique',          logo: '/assets/partners/prema-botique.webp',          tile: 'light', mode: 'gray' },
+  { name: 'Priya Homes Interiors',   logo: '/assets/partners/priya-homes-interiors.webp', tile: 'black', mode: 'gray' },
+  { name: 'RM Infotech',             logo: '/assets/partners/rm-infotech.webp',            tile: 'dark',  mode: 'mono' },
+  { name: 'The Beautology',          logo: '/assets/partners/the-beautology.webp',         tile: 'black', mode: 'gray' },
+  { name: 'Thirumalai',              logo: '/assets/partners/thirumalai.webp',             tile: 'black', mode: 'gray' },
+  { name: 'Works Mania',             logo: '/assets/partners/works-mania.webp',            tile: 'navy',  mode: 'mono' },
+  { name: 'WOW',                     logo: '/assets/partners/wow.webp',                    tile: 'light', mode: 'mono' },
+  { name: 'YoYo',                    logo: '/assets/partners/yoyo.webp',                   tile: 'black', mode: 'gray' },
+  { name: 'Zentra',                  logo: '/assets/partners/zentra.webp',                 tile: 'black', mode: 'gray' },
+]

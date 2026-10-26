@@ -23,7 +23,7 @@ export default function Footer() {
     { scope: root },
   )
 
-  const company = [...nav, { label: 'Careers', to: '/careers' }, { label: 'Contact', to: '/contact' }]
+  const company = [...nav, { label: 'Blog', to: '/blog' }, { label: 'Careers', to: '/careers' }, { label: 'Contact', to: '/contact' }]
 
   return (
     <footer ref={root} className="overflow-hidden bg-forest text-white">

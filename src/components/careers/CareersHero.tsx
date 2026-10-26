@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
-import { careers } from '@/content/site'
 
 /**
  * Full-viewport hero.
@@ -9,7 +8,7 @@ import { careers } from '@/content/site'
  * Animation: each element reveals via a bottom-to-top clip-path curtain —
  * completely different from the y-offset stagger used on the Home hero.
  */
-export default function CareersHero() {
+export default function CareersHero({ openCount }: { openCount?: number } = {}) {
   const root = useRef<HTMLElement>(null)
 
   useGSAP(
@@ -87,15 +86,15 @@ export default function CareersHero() {
         <div className="mt-6 grid gap-8 border-t border-white/12 pt-5 pb-6 md:grid-cols-2 md:items-end md:pb-8">
           {/* Stats */}
           <div className="flex flex-wrap gap-x-8 gap-y-2">
-            {[
-              `${careers.openRoles.length} open positions`,
-              'Remote-first',
-              'Coimbatore, India',
-            ].map((s) => (
-              <span key={s} className="ch-stat text-sm text-white/55 [clip-path:inset(0_0_100%_0)]">
-                {s}
-              </span>
-            ))}
+            <span key="positions-count" className="ch-stat text-sm text-white/55">
+              {openCount ?? 0} {(openCount ?? 0) === 1 ? 'open position' : 'open positions'}
+            </span>
+            <span key="work-mode" className="ch-stat text-sm text-white/55">
+              Remote-first
+            </span>
+            <span key="location" className="ch-stat text-sm text-white/55">
+              Coimbatore, India
+            </span>
           </div>
 
           {/* Actions */}

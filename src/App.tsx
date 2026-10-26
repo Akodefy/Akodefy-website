@@ -23,6 +23,7 @@ const PricingPage = lazy(() => import('@/pages/Pricingpage'))
 const CareersPage = lazy(() => import('@/pages/CareersPage'))
 const BlogPage = lazy(() => import('@/pages/BlogPage'))
 const BlogPostPage = lazy(() => import('@/pages/BlogPostPage'))
+const AdminPage = lazy(() => import('@/pages/AdminPage'))
 
 const INTRO_KEY = 'akodefy-intro-seen'
 const wipe = [0.76, 0, 0.24, 1] as const
@@ -51,9 +52,11 @@ function Page({ children }: { children: ReactNode }) {
 
 function Shell() {
   const location = useLocation()
+  const isAdmin = location.pathname.startsWith('/v1/admin')
+
   return (
     <>
-      <Navbar />
+      {!isAdmin && <Navbar />}
       <AnimatePresence mode="wait" initial={false} onExitComplete={scrollToTop}>
         <Page key={location.pathname}>
           {/* Suspense fallback is invisible — the page-wipe animation covers the transition */}
@@ -71,13 +74,15 @@ function Shell() {
               <Route path="/careers" element={<CareersPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/v1/admin" element={<AdminPage />} />
+              <Route path="/v1/admin/*" element={<AdminPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>
         </Page>
       </AnimatePresence>
-      <Footer />
-      <FloatingCTA />
+      {!isAdmin && <Footer />}
+      {!isAdmin && <FloatingCTA />}
     </>
   )
 }

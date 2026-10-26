@@ -5,10 +5,12 @@ import PerksSection from '@/components/careers/PerksSection'
 import RolesSection from '@/components/careers/RolesSection'
 import HiringSteps from '@/components/careers/HiringSteps'
 import ApplicationForm from '@/components/careers/ApplicationForm'
+import { useRoles } from '@/hooks/useRoles'
 
 import { type JobRole } from '@/content/site'
 
 export default function CareersPage() {
+  const { roles } = useRoles()
   const [applyTarget, setApplyTarget] = useState<JobRole | null | undefined>(undefined)
 
   // undefined  = form hidden
@@ -27,15 +29,16 @@ export default function CareersPage() {
 
   return (
     <>
-      <CareersHero />
+      <CareersHero openCount={roles.length} />
       <WhySection />
       <PerksSection />
-      <RolesSection onApply={openApply} />
+      <RolesSection onApply={openApply} roles={roles} />
       <HiringSteps />
 
       <ApplicationForm
         preselected={showForm ? (applyTarget ?? null) : null}
         onClose={closeApply}
+        roles={roles}
       />
     </>
   )

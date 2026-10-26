@@ -59,37 +59,37 @@ export const statement =
 export const services: Service[] = [
   {
     title: 'Web Development',
-    desc: 'Fast, scalable web applications — from lean MVPs to enterprise platforms using React, Next.js, and modern API architectures.',
+    desc: 'Fast, scalable web applications engineered for performance, security, and compound growth. From interactive MVPs to enterprise platforms, we craft robust full-stack architectures using React, Next.js, and modern API ecosystems.',
     tools: ['React', 'Next.js', 'Node.js'],
     visual: '/assets/service-web.webp',
   },
   {
     title: 'Mobile App Development',
-    desc: 'Native-quality cross-platform apps for iOS and Android. Performant, polished, and built to retain users from first tap.',
+    desc: 'Native-quality cross-platform applications for iOS and Android that users love returning to. Performant, polished, and built with fluid 60fps animations, offline-first reliability, and seamless backend integrations.',
     tools: ['React Native', 'Flutter'],
     visual: '/assets/service-mobile.webp',
   },
   {
     title: 'Digital Marketing',
-    desc: 'Revenue-obsessed campaigns. SEO, paid media, and conversion optimization tied to your actual business metrics — not vanity.',
+    desc: 'Revenue-obsessed campaigns designed to acquire, activate, and retain high-intent customers. We orchestrate data-backed SEO, targeted paid media across search and social, and relentless conversion rate optimization.',
     tools: ['SEO', 'Google Ads', 'Meta'],
     visual: '/assets/service-marketing.webp',
   },
   {
     title: 'Growth & Analytics',
-    desc: 'Custom dashboards, funnel analysis, and A/B testing that turn raw data into compounding growth decisions.',
+    desc: 'Turn raw interaction data into clear, compounding business decisions. We design custom KPI dashboards, cohort retention funnels, and continuous multivariate experimentation that remove guesswork from your growth trajectory.',
     tools: ['Analytics', 'BigQuery'],
     visual: '/assets/service-analytics.webp',
   },
   {
     title: 'UI/UX Design',
-    desc: 'Interfaces that feel inevitable. We design for conversion, retention, and delight — with pixel-precise execution in Figma.',
+    desc: 'Digital interfaces that feel intuitive, elegant, and inevitable. We design for maximum conversion, user retention, and brand loyalty — backed by in-depth user research and pixel-precise design systems built in Figma.',
     tools: ['Figma', 'Design Systems'],
     visual: '/assets/service-design.webp',
   },
   {
     title: 'IT Consulting',
-    desc: 'Cloud architecture, security audits, and digital transformation roadmapping. Strategic technology counsel for ambitious teams.',
+    desc: 'Strategic technology counsel, cloud architecture design, and comprehensive security audits for ambitious teams. We help modern businesses modernize legacy stacks, streamline DevOps CI/CD pipelines, and scale infrastructure predictably.',
     tools: ['Cloud', 'Security'],
     visual: '/assets/service-consulting.webp',
   },

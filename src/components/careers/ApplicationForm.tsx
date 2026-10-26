@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { careers, site, type JobRole } from '@/content/site'
+import { site, type JobRole } from '@/content/site'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 const empty = { name: '', email: '', role: '', linkedin: '', portfolio: '', message: '' }
@@ -15,13 +15,16 @@ const field =
 export default function ApplicationForm({
   preselected,
   onClose,
+  roles,
 }: {
   preselected: JobRole | null
   onClose: () => void
+  roles?: JobRole[]
 }) {
   const [form, setForm] = useState({ ...empty, role: preselected?.title ?? '' })
   const [status, setStatus] = useState<Status>('idle')
   const endpoint = import.meta.env.VITE_CAREERS_ENDPOINT as string | undefined
+  const activeRoles = roles ?? []
 
   const set = (key: keyof typeof empty) => (value: string) =>
     setForm((f) => ({ ...f, [key]: value }))
@@ -142,7 +145,7 @@ export default function ApplicationForm({
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
                   <SelectContent>
-                    {careers.openRoles.map((r) => (
+                    {activeRoles.map((r) => (
                       <SelectItem key={r.id} value={r.title}>{r.title}</SelectItem>
                     ))}
                     <SelectItem value="Speculative application">Speculative application</SelectItem>

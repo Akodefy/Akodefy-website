@@ -6,9 +6,10 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { pages, site } from '@/content/site'
+import emailjs, { emailJsConfig } from '@/lib/emailjs'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
-const empty = { name: '', email: '', service: '', budget: '', message: '' }
+const empty = { name: '', email: '', service: '', timeline: '', message: '' }
 
 // Underline-style fields rather than boxed inputs.
 const field =
@@ -25,26 +26,54 @@ export default function ContactPage() {
     e.preventDefault()
     setStatus('sending')
 
-    // No form service configured: hand the enquiry to the visitor's mail app instead of faking success.
-    if (!endpoint) {
-      const body = `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\nBudget: ${form.budget}\n\n${form.message}`
-      window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent('Project enquiry from ' + form.name)}&body=${encodeURIComponent(body)}`
-      setStatus('sent')
-      return
+    // Try EmailJS first if configured
+    const emailJsConfigured = emailJsConfig.serviceId && emailJsConfig.publicKey && emailJsConfig.contactTemplateId
+    if (emailJsConfigured) {
+      try {
+        await emailjs.send(
+          emailJsConfig.serviceId!,
+          emailJsConfig.contactTemplateId!,
+          {
+            from_name: form.name,
+            from_email: form.email,
+            service: form.service,
+            timeline: form.timeline,
+            message: form.message,
+            to_email: site.contact.email,
+          }
+        )
+        setForm(empty)
+        setStatus('sent')
+        return
+      } catch (error) {
+        console.error('EmailJS error:', error)
+        setStatus('error')
+        return
+      }
     }
 
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
-      })
-      if (!res.ok) throw new Error(String(res.status))
-      setForm(empty)
-      setStatus('sent')
-    } catch {
-      setStatus('error')
+    // Fallback to legacy endpoint if configured
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(form),
+        })
+        if (!res.ok) throw new Error(String(res.status))
+        setForm(empty)
+        setStatus('sent')
+        return
+      } catch {
+        setStatus('error')
+        return
+      }
     }
+
+    // No service configured: hand the enquiry to the visitor's mail app
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nService: ${form.service}\nTimeline: ${form.timeline}\n\n${form.message}`
+    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent('Project enquiry from ' + form.name)}&body=${encodeURIComponent(body)}`
+    setStatus('sent')
   }
 
   const details = [
@@ -82,10 +111,10 @@ export default function ContactPage() {
             {status === 'sent' ? (
               <div role="status" className="border-t-2 border-brand pt-8">
                 <h2 className="font-display text-4xl font-semibold tracking-[-0.04em]">
-                  {endpoint ? 'Message sent' : 'Your email app is opening'}
+                  {emailJsConfig.serviceId || endpoint ? 'Message sent' : 'Your email app is opening'}
                 </h2>
                 <p className="mt-4 max-w-md text-lg text-muted-foreground">
-                  {endpoint
+                  {emailJsConfig.serviceId || endpoint
                     ? 'We have your project details and will reply to the email you gave.'
                     : `Send the drafted email to complete your enquiry. You can also write to ${site.contact.email} directly.`}
                 </p>
@@ -126,17 +155,17 @@ export default function ContactPage() {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="budget" className="text-sm text-muted-foreground">
-                      Approximate budget
+                    <Label htmlFor="timeline" className="text-sm text-muted-foreground">
+                      When do you want to start?
                     </Label>
-                    <Select value={form.budget} onValueChange={set('budget')}>
-                      <SelectTrigger id="budget" className={`${field} w-full`}>
-                        <SelectValue placeholder="Select a range" />
+                    <Select value={form.timeline} onValueChange={set('timeline')}>
+                      <SelectTrigger id="timeline" className={`${field} w-full`}>
+                        <SelectValue placeholder="Select Timeline" />
                       </SelectTrigger>
                       <SelectContent>
-                        {pages.contact.budgets.map((b) => (
-                          <SelectItem key={b} value={b}>
-                            {b}
+                        {pages.contact.timelines.map((t) => (
+                          <SelectItem key={t} value={t}>
+                            {t}
                           </SelectItem>
                         ))}
                       </SelectContent>

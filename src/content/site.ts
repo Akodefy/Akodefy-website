@@ -138,7 +138,7 @@ export const pages = {
     title: 'Let’s start building together',
     sub: 'Tell us about your project and we’ll respond with a tailored plan.',
     services: ['Web Development', 'Mobile App', 'Digital Marketing', 'UI/UX Design', 'Analytics', 'IT Consulting'],
-    budgets: ['$5k–$10k', '$10k–$25k', '$25k–$50k', '$50k+'],
+    timelines: ['Immediately', 'In 1 week', 'In 1 month', 'In 2-3 months'],
   },
   portfolio: { title: 'Work that speaks for itself' },
 }

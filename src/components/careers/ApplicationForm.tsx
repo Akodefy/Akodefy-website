@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { site, type JobRole } from '@/content/site'
+import emailjs, { emailJsConfig } from '@/lib/emailjs'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 const empty = { name: '', email: '', role: '', linkedin: '', portfolio: '', message: '' }
@@ -33,33 +34,63 @@ export default function ApplicationForm({
     e.preventDefault()
     setStatus('sending')
 
-    if (!endpoint) {
-      const body = [
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Role: ${form.role}`,
-        `LinkedIn: ${form.linkedin}`,
-        `Portfolio: ${form.portfolio}`,
-        '',
-        form.message,
-      ].join('\n')
-      window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent('Job application — ' + form.role)}&body=${encodeURIComponent(body)}`
-      setStatus('sent')
-      return
+    // Try EmailJS first if configured
+    const emailJsConfigured = emailJsConfig.serviceId && emailJsConfig.publicKey && emailJsConfig.careersTemplateId
+    if (emailJsConfigured) {
+      try {
+        await emailjs.send(
+          emailJsConfig.serviceId!,
+          emailJsConfig.careersTemplateId!,
+          {
+            from_name: form.name,
+            from_email: form.email,
+            role: form.role,
+            linkedin: form.linkedin,
+            portfolio: form.portfolio,
+            message: form.message,
+            to_email: site.contact.email,
+          }
+        )
+        setForm(empty)
+        setStatus('sent')
+        return
+      } catch (error) {
+        console.error('EmailJS error:', error)
+        setStatus('error')
+        return
+      }
     }
 
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
-      })
-      if (!res.ok) throw new Error(String(res.status))
-      setForm(empty)
-      setStatus('sent')
-    } catch {
-      setStatus('error')
+    // Fallback to legacy endpoint if configured
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(form),
+        })
+        if (!res.ok) throw new Error(String(res.status))
+        setForm(empty)
+        setStatus('sent')
+        return
+      } catch {
+        setStatus('error')
+        return
+      }
     }
+
+    // No service configured: hand the enquiry to the visitor's mail app
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Role: ${form.role}`,
+      `LinkedIn: ${form.linkedin}`,
+      `Portfolio: ${form.portfolio}`,
+      '',
+      form.message,
+    ].join('\n')
+    window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent('Job application — ' + form.role)}&body=${encodeURIComponent(body)}`
+    setStatus('sent')
   }
 
   return (
@@ -110,10 +141,10 @@ export default function ApplicationForm({
           {status === 'sent' ? (
             <div role="status" className="border-t-2 border-brand pt-10">
               <h3 className="font-display text-4xl font-semibold tracking-[-0.04em]">
-                {endpoint ? 'Application received' : 'Your email app is opening'}
+                {emailJsConfig.serviceId || endpoint ? 'Application received' : 'Your email app is opening'}
               </h3>
               <p className="mt-4 max-w-md text-lg text-white/60">
-                {endpoint
+                {emailJsConfig.serviceId || endpoint
                   ? 'We have received your application and will be in touch within five business days.'
                   : `Send the drafted email to complete your application. You can also write directly to ${site.contact.email}.`}
               </p>

@@ -9,10 +9,11 @@ export default function PageHero({ title, sub }: { title: string; sub?: string }
           mode="load"
           delay={0.45}
           text={title}
-          className="max-w-5xl font-display text-[clamp(2.9rem,7.6vw,7.75rem)] font-semibold leading-[0.94] tracking-[-0.05em]"
+          className="max-w-5xl font-display text-[clamp(1.9rem,3.8vw,4rem)] font-semibold leading-[0.96] tracking-[-0.05em]"
         />
         {sub && <p className="mt-9 max-w-xl text-lg text-muted-foreground">{sub}</p>}
       </div>
     </section>
   )
 }
+

@@ -22,7 +22,7 @@ export default function CTASection() {
         <div className="container-x flex flex-col items-center text-center">
           <SplitHeading
             text={cta.title}
-            className="max-w-4xl font-display text-[clamp(2.9rem,8vw,8.5rem)] font-semibold leading-[0.93] tracking-[-0.05em]"
+            className="max-w-4xl font-display text-[clamp(2.5rem,5.5vw,6rem)] font-semibold leading-[0.95] tracking-[-0.05em]"
           />
           <p className="mt-8 max-w-md text-lg text-white/70">{cta.sub}</p>
           <div className="mt-12">

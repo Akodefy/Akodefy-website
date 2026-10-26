@@ -36,12 +36,12 @@ export default function HiringSteps() {
   )
 
   return (
-    <section ref={root} className="bg-paper overflow-hidden py-24 md:py-40">
+    <section ref={root} className="bg-paper overflow-hidden py-14 md:py-24">
       <div className="container-x mb-16 md:mb-20">
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">
           Hiring process
         </p>
-        <h2 className="mt-4 font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <h2 className="mt-4 font-display text-[clamp(1.9rem,3.8vw,4rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
           Fast, fair, and transparent.
         </h2>
       </div>
@@ -51,7 +51,7 @@ export default function HiringSteps() {
         return (
           <div
             key={s.no}
-            className={`hs-step relative border-t border-border py-14 md:py-20 ${isEven ? 'bg-forest/40' : ''}`}
+            className={`hs-step relative border-t border-border py-8 md:py-12 ${isEven ? 'bg-forest/40' : ''}`}
           >
             <div className="container-x relative flex flex-col gap-6 md:flex-row md:items-center md:gap-0">
               {/* Ghost number — absolutely positioned behind content */}
@@ -74,7 +74,7 @@ export default function HiringSteps() {
               <div
                 className={`relative z-10 flex-1 ${isEven ? 'md:pr-20 md:text-right' : 'md:pl-20'}`}
               >
-                <h3 className="font-display text-[clamp(2rem,4vw,3.75rem)] font-semibold leading-none tracking-[-0.04em]">
+                <h3 className="font-display text-[clamp(1.7rem,3.2vw,3rem)] font-semibold leading-none tracking-[-0.04em]">
                   {s.title}
                 </h3>
                 <p className={`mt-5 text-lg text-muted-foreground ${isEven ? 'md:ml-auto' : ''} max-w-lg`}>
@@ -88,3 +88,6 @@ export default function HiringSteps() {
     </section>
   )
 }
+
+
+

@@ -60,12 +60,12 @@ export default function ApplicationForm({
   }
 
   return (
-    <section id="apply" className="bg-forest py-28 text-white md:py-44">
+    <section id="apply" className="bg-forest py-16 text-white md:py-24">
       <div className="container-x grid gap-16 md:grid-cols-12">
         {/* Left — context */}
         <div className="md:col-span-5">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">Apply now</p>
-          <h2 className="mt-6 font-display text-[clamp(2.2rem,4.5vw,4rem)] font-semibold leading-[1.0] tracking-[-0.04em]">
+          <h2 className="mt-6 font-display text-[clamp(1.8rem,3.5vw,3.25rem)] font-semibold leading-[1.0] tracking-[-0.04em]">
             {preselected && preselected.id !== 'speculative'
               ? `Applying for ${preselected.title}`
               : 'Send your application'}
@@ -196,3 +196,5 @@ export default function ApplicationForm({
     </section>
   )
 }
+
+

@@ -21,11 +21,11 @@ function Logo({ name, logo }: { name: string; logo: string }) {
         draggable={false}
         style={{ mixBlendMode: 'screen' }}
         className="
-          h-10 w-auto max-w-[9rem] select-none object-contain
+          h-14 w-auto max-w-[12rem] select-none object-contain
           grayscale opacity-75
           transition-opacity duration-400
           hover:opacity-100
-          md:h-12 md:max-w-[11rem]
+          md:h-16 md:max-w-[15rem]
         "
       />
     </li>
@@ -92,13 +92,13 @@ export default function PartnersSection() {
   if (!partners.length) return null
 
   return (
-    <section ref={root} className="overflow-hidden bg-paper py-20 md:py-28">
+    <section ref={root} className="overflow-hidden bg-paper py-12 md:py-16">
       {/* Heading */}
-      <div className="container-x mb-14 md:mb-16">
+      <div className="container-x mb-8 md:mb-10">
         <div className="ps-heading">
           <SplitHeading
             text={partnersHeading}
-            className="font-display text-[clamp(2rem,5vw,3.75rem)] font-semibold tracking-[-0.04em] text-foreground"
+            className="font-display text-[clamp(1.8rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-foreground"
           />
         </div>
         <p className="ps-sub mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">

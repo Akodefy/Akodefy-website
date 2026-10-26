@@ -42,7 +42,7 @@ export default function BlogPage() {
                 {['Thinking', 'out', 'loud.'].map((w) => (
                   <span
                     key={w}
-                    className="bl-word inline-block font-display text-[clamp(2.8rem,7vw,7rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-foreground"
+                    className="bl-word inline-block font-display text-[clamp(2.4rem,4.5vw,5rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-foreground"
                   >
                     {w}
                   </span>
@@ -77,3 +77,4 @@ export default function BlogPage() {
     </div>
   )
 }
+

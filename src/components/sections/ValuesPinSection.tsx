@@ -218,7 +218,7 @@ export default function ValuesPinSection() {
         <div className="relative h-[55svh] md:col-span-9">
           {values.map((v, idx) => (
             <div key={v.title} className={cn('val-item absolute inset-0 flex items-center', idx > 0 && 'invisible')}>
-              <p className="max-w-[56rem] font-display text-[clamp(1.9rem,4.4vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.04em]">
+              <p className="max-w-[56rem] font-display text-[clamp(1.6rem,3.2vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.04em]">
                 {v.text.split(' ').map((w, i) => (
                   <span key={i} className={cn('val-w mr-[0.22em] inline-block', idx > 0 && 'opacity-[0.12]')}>
                     {w}

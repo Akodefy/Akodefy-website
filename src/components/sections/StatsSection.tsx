@@ -10,7 +10,7 @@ export default function StatsSection() {
       <div className="container-x grid gap-12 border-t border-border pt-12 md:grid-cols-[repeat(auto-fit,minmax(12rem,1fr))]">
         {stats.map((s) => (
           <div key={s.label}>
-            <p className="font-display text-[clamp(3.5rem,7vw,6.5rem)] font-semibold leading-none tracking-[-0.05em]">
+            <p className="font-display text-[clamp(2.8rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.05em]">
               <CountUp to={s.value} duration={2.2} separator="," />
               {s.suffix && <span className="text-brand-deep">{s.suffix}</span>}
             </p>

@@ -33,7 +33,7 @@ export default function ServicesSection({ showHeader = true }: { showHeader?: bo
       <div className="container-x">
         {showHeader && (
           <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
-            <h2 className="max-w-2xl font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+            <h2 className="max-w-2xl font-display text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
               End-to-end digital craft.
             </h2>
             <Link to="/services" className="cursor-target text-base underline decoration-brand decoration-2 underline-offset-8">
@@ -54,7 +54,7 @@ export default function ServicesSection({ showHeader = true }: { showHeader?: bo
             <div className="svc-veil pointer-events-none absolute inset-0 z-10 bg-black opacity-0" />
             <div className="grid gap-10 p-7 md:min-h-[30rem] md:grid-cols-12 md:p-12">
               <div className="flex flex-col justify-between gap-10 md:col-span-7">
-                <h3 className="font-display text-[clamp(2.3rem,5vw,4.75rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+                <h3 className="font-display text-[clamp(1.6rem,2.5vw,2.6rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
                   {s.title}
                 </h3>
                 <div>
@@ -77,3 +77,7 @@ export default function ServicesSection({ showHeader = true }: { showHeader?: bo
     </section>
   )
 }
+
+
+
+

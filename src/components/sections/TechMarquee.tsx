@@ -64,7 +64,7 @@ export default function TechMarquee() {
                 <span key={`${name}-${i}`} className="flex items-center">
                   <span
                     className={cn(
-                      'font-display text-[clamp(2.8rem,6.5vw,6rem)] font-semibold leading-[1.05] tracking-[-0.04em]',
+                      'font-display text-[clamp(2.2rem,4vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em]',
                       (i + r) % 2 === 1 && 'text-transparent [-webkit-text-stroke:2px_#072A1E]',
                     )}
                   >

@@ -142,7 +142,7 @@ export default function HeroSection() {
             mode="load"
             delay={0.3}
             text={hero.headline}
-            className="max-w-5xl font-display text-[clamp(2.9rem,7.6vw,7.75rem)] font-semibold leading-[0.94] tracking-[-0.05em]"
+            className="max-w-5xl font-display text-[clamp(2.6rem,5.5vw,6.25rem)] font-semibold leading-[0.95] tracking-[-0.05em]"
           />
           <p className="hero-in mt-8 max-w-xl text-lg text-white/75 opacity-0">{hero.sub}</p>
           <div className="hero-in pointer-events-auto mt-10 flex flex-wrap justify-center gap-3 opacity-0">

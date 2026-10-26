@@ -93,7 +93,7 @@ export default function RolesSection({ onApply }: { onApply: (role: JobRole | nu
   )
 
   return (
-    <section ref={root} id="open-roles" className="overflow-hidden bg-paper py-16 md:py-28">
+    <section ref={root} id="open-roles" className="overflow-hidden bg-paper py-12 md:py-20">
       <div className="container-x">
         {/* Header + filter */}
         <div className="cr-header mb-12 flex flex-wrap items-end justify-between gap-8 md:mb-16">
@@ -101,7 +101,7 @@ export default function RolesSection({ onApply }: { onApply: (role: JobRole | nu
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand">
               Open positions
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+            <h2 className="mt-4 font-display text-[clamp(1.9rem,3.8vw,4rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
               Find your role.
             </h2>
           </div>
@@ -149,3 +149,5 @@ export default function RolesSection({ onApply }: { onApply: (role: JobRole | nu
     </section>
   )
 }
+
+

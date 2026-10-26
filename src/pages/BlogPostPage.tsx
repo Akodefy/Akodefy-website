@@ -157,7 +157,7 @@ export default function BlogPostPage() {
               </div>
 
               {/* Title */}
-              <h1 className="font-display text-[clamp(2rem,5.5vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.045em] text-white">
+              <h1 className="font-display text-[clamp(1.8rem,3.8vw,3.5rem)] font-semibold leading-[0.96] tracking-[-0.045em] text-white">
                 {post.title}
               </h1>
 
@@ -233,3 +233,4 @@ export default function BlogPostPage() {
     </>
   )
 }
+

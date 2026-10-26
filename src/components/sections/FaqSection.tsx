@@ -5,7 +5,7 @@ export default function FaqSection() {
   return (
     <section className="bg-paper py-14 md:py-20">
       <div className="container-x grid gap-12 md:grid-cols-12 md:gap-10">
-        <h2 className="font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em] md:col-span-5">
+        <h2 className="font-display text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[0.98] tracking-[-0.045em] md:col-span-5">
           {pricing.faqTitle}
         </h2>
         <Accordion type="single" collapsible className="md:col-span-7">
@@ -22,3 +22,4 @@ export default function FaqSection() {
     </section>
   )
 }
+

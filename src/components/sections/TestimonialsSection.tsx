@@ -187,7 +187,7 @@ export default function TestimonialsSection() {
       <div className="container-x text-center">
         <SplitHeading
           text={testimonialsHeading}
-          className="mx-auto max-w-3xl font-display text-[clamp(2.6rem,6vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.045em]"
+          className="mx-auto max-w-3xl font-display text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[0.98] tracking-[-0.045em]"
         />
       </div>
 
@@ -215,3 +215,4 @@ export default function TestimonialsSection() {
     </section>
   )
 }
+

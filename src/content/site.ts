@@ -54,7 +54,7 @@ export const hero = {
 }
 
 export const statement =
-  'Akodefy is a technology company built by engineers and designers who care about outcomes. We partner with ambitious businesses to build web products, mobile apps, and growth systems that compound over time.'
+  'Akodefy is a technology company built by engineers and designers who care about outcomes. We partner with ambitious businesses to build web products, mobile apps, and growth systems that compound over time. Every product we ship is built to perform, retain, and grow.'
 
 export const services: Service[] = [
   {

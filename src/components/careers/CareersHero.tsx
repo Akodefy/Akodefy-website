@@ -60,7 +60,7 @@ export default function CareersHero() {
   return (
     <section
       ref={root}
-      className="relative flex min-h-svh flex-col overflow-hidden bg-forest text-white pt-28 md:pt-36"
+      className="relative flex flex-col overflow-hidden bg-forest text-white pt-28 pb-6 md:pt-36 md:pb-8"
     >
       {/* Subtle radial halo */}
       <div
@@ -68,23 +68,23 @@ export default function CareersHero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_40%_at_80%_60%,rgba(43,255,136,0.1),transparent_70%)]"
       />
 
-      <div className="container-x flex flex-1 flex-col">
+      <div className="container-x flex flex-col">
         {/* Eyebrow */}
         <p className="ch-eyebrow text-sm font-semibold uppercase tracking-[0.14em] text-brand [clip-path:inset(0_0_100%_0)]">
           Careers at Akodefy
         </p>
 
-        {/* Headline — two lines animate independently */}
-        <div className="ch-headline mt-10 flex-1 flex items-center">
-          <h1 className="font-display font-semibold leading-[0.86] tracking-[-0.06em] max-w-full"
-            style={{ fontSize: 'clamp(3rem, 17vw, 16rem)' }}>
+        {/* Headline */}
+        <div className="ch-headline mt-10">
+          <h1 className="font-display font-semibold leading-[0.88] tracking-[-0.055em] max-w-full"
+            style={{ fontSize: 'clamp(2.2rem, 5.5vw, 5rem)' }}>
             <span className="ch-line block [clip-path:inset(0_0_100%_0)]">We're</span>
             <span className="ch-line block text-brand [clip-path:inset(0_0_100%_0)]">hiring.</span>
           </h1>
         </div>
 
         {/* Bottom strip */}
-        <div className="mt-10 grid gap-8 border-t border-white/12 pt-6 pb-10 md:grid-cols-2 md:items-end md:pb-12">
+        <div className="mt-6 grid gap-8 border-t border-white/12 pt-5 pb-6 md:grid-cols-2 md:items-end md:pb-8">
           {/* Stats */}
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             {[
@@ -118,3 +118,4 @@ export default function CareersHero() {
     </section>
   )
 }
+

@@ -28,7 +28,7 @@ export default function ProcessSection() {
     <section ref={root} className="bg-forest py-16 text-white md:py-24">
       <div className="container-x grid gap-16 md:grid-cols-12">
         <div className="md:col-span-5">
-          <h2 className="font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em] md:sticky md:top-32">
+          <h2 className="font-display text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[0.98] tracking-[-0.045em] md:sticky md:top-32">
             {process.title}
           </h2>
         </div>
@@ -40,7 +40,7 @@ export default function ProcessSection() {
           {process.steps.map((s) => (
             <div key={s.no} className="proc-step py-12 pl-10 first:pt-0 md:py-16 md:pl-16">
               <p className="font-display text-xl font-medium text-brand">{s.no}</p>
-              <h3 className="mt-3 font-display text-[clamp(2.4rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.045em]">
+              <h3 className="mt-3 font-display text-[clamp(1.6rem,2.6vw,2.5rem)] font-semibold leading-none tracking-[-0.045em]">
                 {s.title}
               </h3>
               <p className="mt-5 max-w-md text-lg text-white/70">{s.desc}</p>
@@ -51,3 +51,7 @@ export default function ProcessSection() {
     </section>
   )
 }
+
+
+
+

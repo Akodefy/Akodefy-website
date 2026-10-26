@@ -31,14 +31,14 @@ export default function PerksSection() {
   )
 
   return (
-    <section ref={root} className="overflow-hidden bg-brand py-16 text-forest md:py-28">
+    <section ref={root} className="overflow-hidden bg-brand py-12 text-forest md:py-20">
       <div className="container-x">
         <div className="mb-16 flex flex-wrap items-end justify-between gap-6 md:mb-24">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-forest/45">
               Benefits
             </p>
-            <h2 className="mt-4 font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+            <h2 className="mt-4 font-display text-[clamp(1.9rem,3.8vw,4rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
               What we offer
             </h2>
           </div>
@@ -81,3 +81,5 @@ export default function PerksSection() {
     </section>
   )
 }
+
+

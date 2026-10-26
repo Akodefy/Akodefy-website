@@ -12,7 +12,7 @@ export default function MarqueeSection() {
         texts={[rowA, rowB]}
         velocity={55}
         numCopies={6}
-        className="font-display text-[clamp(3rem,8.5vw,8rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-ink"
+        className="font-display text-[clamp(2.5rem,5.5vw,5.5rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-ink"
       />
     </section>
   )

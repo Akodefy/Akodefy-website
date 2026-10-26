@@ -83,7 +83,7 @@ export default function BlogFeatured({ post }: Props) {
         </div>
 
         {/* Title */}
-        <h2 className="bf-title max-w-4xl font-display text-[clamp(2rem,5.5vw,5rem)] font-semibold leading-[0.97] tracking-[-0.045em] text-white">
+        <h2 className="bf-title max-w-4xl font-display text-[clamp(1.8rem,3.5vw,4rem)] font-semibold leading-[0.97] tracking-[-0.045em] text-white">
           {post.title}
         </h2>
 
@@ -104,3 +104,4 @@ export default function BlogFeatured({ post }: Props) {
     </section>
   )
 }
+

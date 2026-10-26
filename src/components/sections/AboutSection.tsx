@@ -7,7 +7,7 @@ export default function AboutSection({ showLink = false }: { showLink?: boolean 
       <div className="container-x grid gap-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
-            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
+            <h2 className="font-display text-[clamp(1.75rem,3.2vw,3rem)] font-semibold leading-[0.98] tracking-[-0.045em]">
               {about.title}
             </h2>
             <ul className="mt-10 max-w-md divide-y divide-border border-y border-border">
@@ -39,3 +39,5 @@ export default function AboutSection({ showLink = false }: { showLink?: boolean 
     </section>
   )
 }
+
+

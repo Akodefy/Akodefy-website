@@ -79,7 +79,7 @@ export default function Footer() {
       </div>
 
       <div className="container-x flex flex-wrap items-center justify-between gap-4 border-t border-white/10 py-6 text-sm text-white/50">
-        <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+        <p>© 2024 {site.legalName}. All rights reserved.</p>
         <ul className="flex gap-6">
           {site.socials.map((s) => (
             <li key={s.label}>

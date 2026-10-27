@@ -14,6 +14,7 @@ import {
   deleteJobRole,
   type ManagedJobRole,
 } from '@/lib/careersService'
+import BlogManager from '@/components/admin/BlogManager'
 import {
   Briefcase,
   Plus,
@@ -33,6 +34,7 @@ import {
   Lock,
   Mail,
   Key,
+  FileText,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -68,6 +70,7 @@ export default function AdminPage() {
   const isConfigured = isFirebaseConfigured()
   const [user, setUser] = useState<User | null>(null)
   const [authChecking, setAuthChecking] = useState<boolean>(true)
+  const [activeTab, setActiveTab] = useState<'careers' | 'blog'>('careers')
 
   // Login form state
   const [email, setEmail] = useState('')
@@ -413,9 +416,9 @@ export default function AdminPage() {
                 </span>
                 <div>
                   <h1 className="font-display text-base font-semibold leading-none">
-                    Akodefy Careers
+                    Akodefy Admin Portal
                   </h1>
-                  <span className="text-[11px] text-white/50">HR Hiring Management Portal</span>
+                  <span className="text-[11px] text-white/50">Content Management System</span>
                 </div>
               </div>
 
@@ -425,28 +428,55 @@ export default function AdminPage() {
                     {user.email}
                   </span>
                 )}
-                <a
-                  href="/careers"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/70 transition hover:bg-white/5 hover:text-white"
-                >
-                  <Eye className="size-3.5" />
-                  <span>View Careers Page</span>
-                </a>
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-red-400 transition hover:bg-red-500/10 hover:border-red-500/30"
+                  className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-red-400 transition hover:border-red-500/30 hover:bg-red-500/10"
                 >
                   <LogOut className="size-3.5" />
                   <span>Sign Out</span>
                 </button>
               </div>
             </div>
+
+            {/* Tabs Navigation */}
+            <div className="container-x">
+              <div className="flex gap-1 border-b border-white/5">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('careers')}
+                  className={cn(
+                    'flex items-center gap-2 px-4 py-3 text-sm font-medium transition',
+                    activeTab === 'careers'
+                      ? 'border-b-2 border-brand text-brand'
+                      : 'text-white/50 hover:text-white/70'
+                  )}
+                >
+                  <Briefcase className="size-4" />
+                  <span>Careers & Hiring</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('blog')}
+                  className={cn(
+                    'flex items-center gap-2 px-4 py-3 text-sm font-medium transition',
+                    activeTab === 'blog'
+                      ? 'border-b-2 border-brand text-brand'
+                      : 'text-white/50 hover:text-white/70'
+                  )}
+                >
+                  <FileText className="size-4" />
+                  <span>Blog Articles</span>
+                </button>
+              </div>
+            </div>
           </header>
 
           <main className="container-x py-10">
+            {activeTab === 'blog' ? (
+              <BlogManager />
+            ) : (
+              <div>
             {/* Quick Stats & Actions Banner */}
             <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-2xl border border-white/10 bg-[#131915] p-5">
@@ -637,6 +667,8 @@ export default function AdminPage() {
                     </div>
                   ))}
               </div>
+            )}
+            </div>
             )}
           </main>
 

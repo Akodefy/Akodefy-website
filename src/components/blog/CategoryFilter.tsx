@@ -1,17 +1,16 @@
-import { useState, useRef, useEffect } from 'react'
-import { allCategories } from '@/content/blog'
+﻿import { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 type Props = {
   active: string
   onChange: (cat: string) => void
+  categories: string[]
 }
 
-export default function CategoryFilter({ active, onChange }: Props) {
+export default function CategoryFilter({ active, onChange, categories }: Props) {
   const barRef = useRef<HTMLDivElement>(null)
   const [stuck, setStuck] = useState(false)
 
-  // Detect when the bar sticks so we can add a subtle shadow
   useEffect(() => {
     const bar = barRef.current
     if (!bar) return
@@ -35,7 +34,7 @@ export default function CategoryFilter({ active, onChange }: Props) {
         <span className="mr-2 shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
           Filter
         </span>
-        {allCategories.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => onChange(cat)}

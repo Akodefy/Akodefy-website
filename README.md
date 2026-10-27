@@ -91,3 +91,147 @@ Shared style, add to every prompt:
 ## 5. Status
 
 This was written without network access, so `npm install` and `npm run build` have not been run on it. Expect to resolve a few small items on first run, most likely the React Bits install paths. Send me the error output and I will fix it.
+
+---
+
+## 🎯 New Features: Dynamic Blog System
+
+The site now includes a full-featured blog CMS with:
+
+### ✨ Features
+- 📝 **Admin Portal**: Create, edit, and manage blog posts
+- ☁️ **Cloudinary Integration**: Upload and optimize images
+- 🔥 **Firebase/Firestore**: Real-time content storage
+- ✏️ **Rich Content**: Support for paragraphs, headings, quotes, lists
+- 🎨 **Draft/Publish Workflow**: Control when content goes live
+- ⭐ **Featured Posts**: Highlight important articles
+- 🏷️ **Category Filtering**: Organize by topics
+- 📱 **Fully Responsive**: Beautiful on all devices
+
+### 🚀 Quick Start
+
+1. **Setup Cloudinary**
+   ```bash
+   # Get credentials from cloudinary.com
+   # Add to .env:
+   VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+   VITE_CLOUDINARY_UPLOAD_PRESET=your_preset_name
+   ```
+
+2. **Migrate Existing Posts**
+   ```bash
+   npm run migrate:blog
+   ```
+
+3. **Access Admin Portal**
+   ```
+   Navigate to /admin
+   Sign in with Firebase credentials
+   Click "Blog Articles" tab
+   ```
+
+### 📚 Documentation
+
+- **Quick Start**: [QUICK_START_BLOG.md](./QUICK_START_BLOG.md) - 15-minute setup
+- **Cloudinary Setup**: [CLOUDINARY_SETUP.md](./CLOUDINARY_SETUP.md) - Image upload config
+- **Complete Guide**: [BLOG_SETUP.md](./BLOG_SETUP.md) - Full documentation
+- **Existing Docs**: [EMAILJS_SETUP.md](./EMAILJS_SETUP.md), [NETLIFY_DEPLOYMENT.md](./NETLIFY_DEPLOYMENT.md)
+
+### 🗂️ Project Structure
+
+```
+src/
+├── components/
+│   ├── admin/
+│   │   └── BlogManager.tsx         # Admin blog management UI
+│   └── blog/
+│       ├── BlogFeatured.tsx        # Featured post hero
+│       ├── PostGrid.tsx            # Post listings
+│       └── CategoryFilter.tsx      # Category navigation
+├── lib/
+│   ├── blogService.ts              # Firestore blog operations
+│   └── cloudinary.ts               # Image upload utilities
+├── pages/
+│   ├── BlogPage.dynamic.tsx        # Public blog listing
+│   ├── BlogPostPage.dynamic.tsx    # Individual post view
+│   └── AdminPage.tsx               # Admin portal with tabs
+└── scripts/
+    └── migrateBlogToFirestore.ts   # One-time migration
+```
+
+### 🎨 Content Management
+
+**Creating Posts:**
+1. Go to `/admin` > Blog Articles
+2. Click "Create New Article"
+3. Fill in title, category, excerpt
+4. Upload cover image via Cloudinary
+5. Add body content (JSON format)
+6. Publish or save as draft
+
+**Content Format:**
+```json
+[
+  {"type": "p", "text": "Paragraph content..."},
+  {"type": "h2", "text": "Section Heading"},
+  {"type": "quote", "text": "Quote text", "attribution": "Source"},
+  {"type": "ul", "items": ["Item 1", "Item 2"]}
+]
+```
+
+### 🔧 Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run linter
+npm run migrate:blog # Migrate blog posts to Firestore (one-time)
+```
+
+### 🌐 Environment Variables
+
+```env
+# Firebase (already configured)
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_PROJECT_ID=...
+
+# Cloudinary (new)
+VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+VITE_CLOUDINARY_UPLOAD_PRESET=your_preset_name
+
+# EmailJS (existing)
+VITE_EMAILJS_SERVICE_ID=...
+```
+
+### 🔒 Security
+
+Firestore security rules control access:
+- Public: Read published posts only
+- Admin: Full CRUD on all posts
+- See `BLOG_SETUP.md` for rule configuration
+
+### 📊 Tech Stack
+
+**Blog System:**
+- **Frontend**: React 19, TypeScript 6
+- **Styling**: Tailwind CSS 4
+- **Animation**: GSAP, Framer Motion
+- **Backend**: Firebase/Firestore
+- **Media**: Cloudinary
+- **Build**: Vite 8
+
+### 🎉 What's Included
+
+- ✅ 7 pre-written blog posts ready to migrate
+- ✅ Admin portal with career & blog management
+- ✅ Image upload and optimization
+- ✅ Category filtering and search
+- ✅ Featured post highlighting
+- ✅ Draft/publish workflow
+- ✅ Responsive design
+- ✅ SEO-friendly URLs
+
+---
+
+**Need help?** Check the documentation files or review the browser console for errors.

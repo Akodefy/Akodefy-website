@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { gsap, useGSAP } from '@/lib/gsap'
-import { posts, nonFeaturedPosts, formatDate, type PostBlock } from '@/content/blog'
+import { getAllPosts, getPostBySlug, type BlogPost } from '@/lib/blogService'
+import { formatDate, type Post, type PostBlock } from '@/content/blog'
 import CTASection from '@/components/sections/CTASection'
 
 /* ─── Reading progress bar ──────────────────────────────────────── */
@@ -72,17 +73,61 @@ function Block({ block }: { block: PostBlock }) {
   }
 }
 
+/* ─── Adapter ─────────────────────────────────────────────────────── */
+function toPost(p: BlogPost): Post {
+  return {
+    slug: p.slug,
+    title: p.title,
+    category: p.category,
+    date: p.date,
+    readTime: p.readTime,
+    excerpt: p.excerpt,
+    cover: p.cover,
+    coverGradient: p.coverGradient,
+    featured: p.featured,
+    body: p.body as Post['body'],
+  }
+}
+
 /* ─── Main page ──────────────────────────────────────────────────── */
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
   const root = useRef<HTMLDivElement>(null)
 
-  const post = posts.find((p) => p.slug === slug)
+  const [post, setPost] = useState<Post | null>(null)
+  const [relatedPosts, setRelatedPosts] = useState<Post[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!post) navigate('/blog', { replace: true })
-  }, [post, navigate])
+    if (!slug) { navigate('/blog', { replace: true }); return }
+
+    setLoading(true)
+
+    Promise.all([getPostBySlug(slug), getAllPosts()])
+      .then(([firestorePost, allFirestorePosts]) => {
+        if (!firestorePost) {
+          navigate('/blog', { replace: true })
+          return
+        }
+        const current = toPost(firestorePost)
+        setPost(current)
+
+        // Related: same category, exclude current, max 3
+        const allPosts = allFirestorePosts.map(toPost)
+        const sameCat = allPosts.filter((p) => p.slug !== slug && p.category === current.category)
+        setRelatedPosts(
+          sameCat.length > 0
+            ? sameCat.slice(0, 3)
+            : allPosts.filter((p) => p.slug !== slug).slice(0, 3)
+        )
+      })
+      .catch((err) => {
+        console.error('[BlogPost] Firestore fetch failed:', err)
+        navigate('/blog', { replace: true })
+      })
+      .finally(() => setLoading(false))
+  }, [slug, navigate])
 
   useGSAP(
     () => {
@@ -106,24 +151,17 @@ export default function BlogPostPage() {
         })
       })
     },
-    { scope: root, dependencies: [slug] },
+    { scope: root, dependencies: [post] },
   )
 
-  if (!post) return null
-
-  const related = nonFeaturedPosts
-    .filter((p) => p.slug !== post.slug && p.category === post.category)
-    .slice(0, 3)
-  const relatedPosts = related.length > 0
-    ? related
-    : nonFeaturedPosts.filter((p) => p.slug !== post.slug).slice(0, 3)
+  if (loading || !post) return null
 
   return (
     <>
       <ProgressBar />
       <div ref={root} className="bg-paper">
 
-        {/* ── Full-bleed cover ── */}
+        {/* Full-bleed cover */}
         <div className="relative w-full overflow-hidden" style={{ height: 'min(75vh, 600px)' }}>
           <img
             src={post.cover}
@@ -138,11 +176,8 @@ export default function BlogPostPage() {
                 'linear-gradient(to top, rgba(5,8,6,1) 0%, rgba(5,8,6,0.55) 50%, rgba(5,8,6,0.15) 100%)',
             }}
           />
-
-          {/* Header overlaid on image */}
           <div className="absolute inset-x-0 bottom-0 px-5 pb-10 md:px-10 lg:px-16 xl:px-24">
             <header className="bp-hd-inner flex max-w-5xl flex-col gap-5">
-              {/* Breadcrumb + tags */}
               <div className="flex flex-wrap items-center gap-3">
                 <Link
                   to="/blog"
@@ -155,13 +190,9 @@ export default function BlogPostPage() {
                   {post.category}
                 </span>
               </div>
-
-              {/* Title */}
               <h1 className="font-display text-[clamp(1.8rem,3.8vw,3.5rem)] font-semibold leading-[0.96] tracking-[-0.045em] text-white">
                 {post.title}
               </h1>
-
-              {/* Meta */}
               <div className="flex items-center gap-5 text-sm text-white/50">
                 <span className="tabular-nums">{formatDate(post.date)}</span>
                 <span className="h-3 w-px bg-white/20" />
@@ -171,13 +202,11 @@ export default function BlogPostPage() {
           </div>
         </div>
 
-        {/* ── Article body ── */}
+        {/* Article body */}
         <div className="mx-auto w-full max-w-4xl px-5 pb-24 pt-14 md:px-10 lg:px-8 xl:px-0">
-          {/* Standfirst / excerpt */}
           <p className="bp-block mb-10 border-b border-border pb-10 text-[1.2rem] font-medium leading-[1.7] text-foreground/80">
             {post.excerpt}
           </p>
-
           <article>
             {post.body.map((block, i) => (
               <Block key={i} block={block} />
@@ -185,7 +214,7 @@ export default function BlogPostPage() {
           </article>
         </div>
 
-        {/* ── Related posts ── */}
+        {/* Related posts */}
         {relatedPosts.length > 0 && (
           <section className="border-t border-border">
             <div className="border-b border-border px-5 py-6 md:px-10 lg:px-16 xl:px-24">
@@ -228,9 +257,7 @@ export default function BlogPostPage() {
           </section>
         )}
       </div>
-
       <CTASection />
     </>
   )
 }
-

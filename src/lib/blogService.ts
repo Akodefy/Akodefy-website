@@ -11,7 +11,6 @@ import {
   deleteDoc,
   query,
   orderBy,
-  where,
   type Timestamp,
   serverTimestamp,
 } from 'firebase/firestore'
@@ -119,3 +118,4 @@ export function formatDate(dateString: string): string {
     year: 'numeric',
   })
 }
+

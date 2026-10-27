@@ -138,12 +138,7 @@ export default function RolesSection({
         {/* Role list OR Empty state */}
         {activeRoles.length === 0 ? (
           <div className="rounded-2xl border border-white/10 bg-forest/40 p-8 text-center md:p-14">
-            <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-brand/10 text-brand ring-1 ring-brand/20">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-6">
-                <rect width="20" height="14" x="2" y="7" rx="2" />
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-              </svg>
-            </div>
+            
             <h3 className="mt-4 font-display text-xl font-semibold text-white">
               No open roles at the moment
             </h3>

@@ -2,11 +2,8 @@ import { useRef } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
 
 /**
- * Tracks real asset readiness:
- *   0–20%  fonts ready
- *   20–90% images loaded (proportional to count resolved)
- *   90%    pauses until window load fires
- *   100%   complete → slide off
+ * High-performance, buttery-smooth intro loader (1.2–1.6s total).
+ * Smoothly animates progress 0 -> 100% with no network stalling.
  */
 export default function Loader({ onReveal, onDone }: { onReveal: () => void; onDone: () => void }) {
   const root = useRef<HTMLDivElement>(null)
@@ -18,40 +15,17 @@ export default function Loader({ onReveal, onDone }: { onReveal: () => void; onD
       const html = document.documentElement
       html.style.overflow = 'hidden'
 
-      let current = 0
+      const progressObj = { value: 0 }
 
-      const setProgress = (p: number) => {
-        if (p <= current) return
-        current = p
-        if (countRef.current) countRef.current.textContent = String(Math.round(p))
-        if (barRef.current) barRef.current.style.width = `${p}%`
+      const updateProgress = () => {
+        const rounded = Math.round(progressObj.value)
+        if (countRef.current) {
+          countRef.current.textContent = String(rounded)
+        }
+        if (barRef.current) {
+          barRef.current.style.width = `${progressObj.value}%`
+        }
       }
-
-      // Collect all img elements (including those added during render)
-      const getImages = () => Array.from(document.querySelectorAll<HTMLImageElement>('img'))
-
-      const loadImages = (): Promise<void> =>
-        new Promise((resolve) => {
-          const imgs = getImages()
-          if (!imgs.length) { resolve(); return }
-          let done = 0
-          const onOne = () => {
-            done++
-            // 20–90% range driven by image count
-            setProgress(20 + Math.round((done / imgs.length) * 70))
-            if (done === imgs.length) resolve()
-          }
-          imgs.forEach((img) => {
-            if (img.complete) { onOne(); return }
-            img.addEventListener('load', onOne, { once: true })
-            img.addEventListener('error', onOne, { once: true })
-          })
-        })
-
-      const windowLoad = new Promise<void>((resolve) => {
-        if (document.readyState === 'complete') resolve()
-        else window.addEventListener('load', () => resolve(), { once: true })
-      })
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -60,40 +34,50 @@ export default function Loader({ onReveal, onDone }: { onReveal: () => void; onD
         },
       })
 
-      // Entrance: letters rise up
+      // 1. Letters rise up swiftly (0s - 0.5s)
       tl.from('.ld-letter', {
-        yPercent: 115,
-        duration: 0.9,
-        ease: 'power4.out',
-        stagger: 0.045,
+        yPercent: 110,
+        duration: 0.5,
+        ease: 'power3.out',
+        stagger: 0.025,
       })
 
-      // Phase 1: fonts ready → 20%
-      tl.add(() => {
-        tl.pause()
-        document.fonts.ready.then(() => {
-          setProgress(20)
-          tl.play()
-        })
-      })
+      // 2. Continuous, smooth 0 -> 100% progress counter (runs concurrently from 0.1s to 1.15s)
+      tl.to(
+        progressObj,
+        {
+          value: 100,
+          duration: 1.05,
+          ease: 'power2.inOut',
+          onUpdate: updateProgress,
+        },
+        0.1,
+      )
 
-      // Phase 2: images loading (20–90%) + window.load
-      tl.add(() => {
-        tl.pause()
-        Promise.all([loadImages(), windowLoad]).then(() => {
-          setProgress(90)
-          // Small deliberate pause at 90 before snapping to 100
-          setTimeout(() => {
-            setProgress(100)
-            setTimeout(() => tl.play(), 300)
-          }, 150)
-        })
-      })
+      // 3. Letters fly out swiftly as it completes 100%
+      tl.to(
+        '.ld-letter',
+        {
+          yPercent: -110,
+          duration: 0.38,
+          ease: 'power3.in',
+          stagger: 0.018,
+        },
+        '>+0.05',
+      )
 
-      // Exit: letters fly out → panel slides up
-      tl.to('.ld-letter', { yPercent: -115, duration: 0.65, ease: 'power3.in', stagger: 0.03 }, '+=0.15')
-        .to(root.current, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '-=0.1')
-        .add(onReveal, '-=0.65')
+      // 4. Panel slides off upwards, revealing the page
+      tl.to(
+        root.current,
+        {
+          yPercent: -100,
+          duration: 0.7,
+          ease: 'expo.inOut',
+        },
+        '<+0.12',
+      )
+        // Trigger page intro animations right as the curtain starts lifting
+        .add(onReveal, '-=0.55')
 
       return () => {
         html.style.overflow = ''
@@ -111,7 +95,9 @@ export default function Loader({ onReveal, onDone }: { onReveal: () => void; onD
       {/* Top row */}
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium tracking-wide text-white/50">Akodefy Info Tech</p>
-        <span ref={countRef} className="font-display text-sm tabular-nums text-brand">0</span>
+        <span ref={countRef} className="font-display text-sm tabular-nums text-brand">
+          0
+        </span>
       </div>
 
       {/* Centre wordmark */}
@@ -130,7 +116,7 @@ export default function Loader({ onReveal, onDone }: { onReveal: () => void; onD
         <div className="h-px w-full bg-white/10">
           <div
             ref={barRef}
-            className="h-full bg-brand transition-[width] duration-300 ease-out"
+            className="h-full bg-brand"
             style={{ width: '0%' }}
           />
         </div>
@@ -139,4 +125,3 @@ export default function Loader({ onReveal, onDone }: { onReveal: () => void; onD
     </div>
   )
 }
-

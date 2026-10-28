@@ -27,14 +27,16 @@ export default function Footer() {
 
   return (
     <footer ref={root} className="overflow-hidden bg-forest text-white">
-      <div className="container-x grid gap-14 pb-10 pt-24 md:grid-cols-12">
-        <div className="md:col-span-5">
+      <div className="container-x grid gap-14 pb-10 pt-24 sm:grid-cols-2 lg:grid-cols-12">
+        {/* Brand statement */}
+        <div className="sm:col-span-2 lg:col-span-4">
           <p className="max-w-sm font-display text-3xl font-medium leading-[1.1] tracking-[-0.03em]">
             IT solutions & digital growth for ambitious businesses worldwide.
           </p>
         </div>
 
-        <div className="md:col-span-2">
+        {/* Services */}
+        <div className="lg:col-span-2">
           <p className="mb-5 text-sm text-white/45">Services</p>
           <ul className="space-y-3 text-[0.95rem]">
             {services.map((s) => (
@@ -47,7 +49,8 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="md:col-span-2">
+        {/* Company */}
+        <div className="lg:col-span-2">
           <p className="mb-5 text-sm text-white/45">Company</p>
           <ul className="space-y-3 text-[0.95rem]">
             {company.map((l) => (
@@ -60,7 +63,18 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="md:col-span-3">
+        {/* Legal */}
+        <div className="lg:col-span-2">
+          <p className="mb-5 text-sm text-white/45">Legal</p>
+          <ul className="space-y-3 text-[0.95rem]">
+            <li><Link to="/privacy" className={linkCls}>Privacy Policy</Link></li>
+            <li><Link to="/terms" className={linkCls}>Terms of Use</Link></li>
+            <li><Link to="/cookies" className={linkCls}>Cookie Policy</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className="lg:col-span-2">
           <p className="mb-5 text-sm text-white/45">Contact</p>
           <ul className="space-y-3 text-[0.95rem]">
             <li>
@@ -78,19 +92,19 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Bottom bar */}
       <div className="container-x flex flex-wrap items-center justify-between gap-4 border-t border-white/10 py-6 text-sm text-white/50">
-        <p>© 2024 {site.legalName}. All rights reserved.</p>
-        <ul className="flex gap-6">
+        <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {site.socials.map((s) => (
-            <li key={s.label}>
-              <a href={s.href} target="_blank" rel="noopener noreferrer" className={linkCls}>
-                {s.label}
-              </a>
-            </li>
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className={linkCls}>
+              {s.label}
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
 
+      {/* Wordmark */}
       <div aria-hidden className="relative">
         <div className="ft-mark pointer-events-none select-none whitespace-nowrap text-center font-display text-[clamp(7rem,27vw,30rem)] font-semibold leading-[0.74] tracking-[-0.07em] text-brand/90">
           akodefy

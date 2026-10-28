@@ -107,7 +107,7 @@
   }
 }
 
-/* ── Performance: GPU compositing hints ────────────────────────────────────────
+/* â”€â”€ Performance: GPU compositing hints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Elements that GSAP will transform/opacity-animate get a compositor layer.
    This tells the browser ahead of time so it doesn't need to promote on-the-fly.
    Only applied where we know transforms will run. */
@@ -119,16 +119,16 @@
   will-change: transform;
 }
 
-/* ── Performance: Layout containment ──────────────────────────────────────────
+/* â”€â”€ Performance: Layout containment â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    IMPORTANT: Do NOT add contain to sections that have sticky/pinned children
-   (ValuesPinSection, ProcessSection) — contain breaks position:sticky.
+   (ValuesPinSection, ProcessSection) â€” contain breaks position:sticky.
    Use .contain-section only on fully self-contained sections. */
 .contain-section {
   contain: layout style;
 }
 
 
-/* ── Performance: below-fold deferred render ──────────────────────────────────
+/* â”€â”€ Performance: below-fold deferred render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    content-visibility:auto lets the browser skip rendering off-screen sections.
    We exclude the hero and the section immediately below the fold. */
 .below-fold {
@@ -137,8 +137,8 @@
   contain-intrinsic-size: auto 500px;
 }
 
-/* ── Partners marquee ─────────────────────────────────────────────────────────
-   Two-row infinite scroll. Row 1 → left, Row 2 → right.
+/* â”€â”€ Partners marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Two-row infinite scroll. Row 1 â†’ left, Row 2 â†’ right.
    Hover on the track wrapper pauses animation. */
 @keyframes marquee {
   from { transform: translateX(0); }

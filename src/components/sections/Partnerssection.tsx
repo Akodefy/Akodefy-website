@@ -5,11 +5,10 @@ import SplitHeading from '@/components/common/SplitHeading'
 import { partners, partnersHeading } from '@/content/site'
 
 if (!partners.length) {
-  // eslint-disable-next-line no-console
   console.warn('PartnersSection: no partners defined in site.ts')
 }
 
-/** Single logo item — no card, no tile, no colour reveal on hover */
+/** Single logo — eager loaded, GPU layer via translateZ */
 function Logo({ name, logo }: { name: string; logo: string }) {
   return (
     <li className="mx-8 flex shrink-0 items-center justify-center md:mx-12">
@@ -17,13 +16,14 @@ function Logo({ name, logo }: { name: string; logo: string }) {
         src={logo}
         alt={name}
         title={name}
-        loading="lazy"
+        loading="eager"
+        decoding="async"
         draggable={false}
         style={{ mixBlendMode: 'screen' }}
         className="
           h-14 w-auto max-w-[12rem] select-none object-contain
-          grayscale opacity-75
-          transition-opacity duration-400
+          grayscale opacity-60
+          transition-opacity duration-300
           hover:opacity-100
           md:h-16 md:max-w-[15rem]
         "
@@ -32,20 +32,31 @@ function Logo({ name, logo }: { name: string; logo: string }) {
   )
 }
 
-/** One infinite marquee track */
+/** One infinite marquee track — 4× duplication guarantees no gap on any screen width */
 function Track({ items, reverse }: { items: typeof partners; reverse?: boolean }) {
-  // Duplicate for seamless loop
-  const doubled = [...items, ...items]
+  // 4× so the seam never appears even on 4K screens
+  const quad = [...items, ...items, ...items, ...items]
 
   return (
-    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div
+      className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+      // Pause on hover via CSS animation-play-state
+      style={{ '--play': 'running' } as React.CSSProperties}
+      onMouseEnter={(e) =>
+        ((e.currentTarget.querySelector('ul') as HTMLElement).style.animationPlayState = 'paused')
+      }
+      onMouseLeave={(e) =>
+        ((e.currentTarget.querySelector('ul') as HTMLElement).style.animationPlayState = 'running')
+      }
+    >
       <ul
-        className={`
-          flex w-max items-center py-4
-          ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}
-        `}
+        className={`flex w-max items-center py-4 ${
+          reverse ? 'animate-marquee-reverse' : 'animate-marquee'
+        }`}
+        // Isolate stacking context so GSAP opacity on parent doesn't affect compositing
+        style={{ isolation: 'isolate' }}
       >
-        {doubled.map((p, i) => (
+        {quad.map((p, i) => (
           <Logo key={`${p.name}-${i}`} name={p.name} logo={p.logo} />
         ))}
       </ul>
@@ -56,13 +67,13 @@ function Track({ items, reverse }: { items: typeof partners; reverse?: boolean }
 export default function PartnersSection() {
   const root = useRef<HTMLElement>(null)
 
-  // Split the 21 logos roughly in half for two rows
   const mid = Math.ceil(partners.length / 2)
   const row1 = partners.slice(0, mid)
   const row2 = partners.slice(mid)
 
   useGSAP(
     () => {
+      // Animate heading and sub — NOT the tracks, to avoid fighting the CSS animation
       gsap.from('.ps-heading', {
         opacity: 0,
         y: 24,
@@ -78,11 +89,12 @@ export default function PartnersSection() {
         delay: 0.15,
         scrollTrigger: { trigger: root.current, start: 'top 85%', once: true },
       })
+      // Fade the track WRAPPER only — never animate the scrolling ul itself
       gsap.from('.ps-tracks', {
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
         ease: 'power2.out',
-        delay: 0.3,
+        delay: 0.25,
         scrollTrigger: { trigger: root.current, start: 'top 85%', once: true },
       })
     },

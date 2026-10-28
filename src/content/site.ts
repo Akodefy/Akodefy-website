@@ -47,7 +47,7 @@ export const nav = [
 
 export const hero = {
   headline: 'We Build Digital Excellence That Converts',
-  sub: 'From strategy to deployment — we craft high-performance web apps, mobile products, and growth systems for ambitious businesses.',
+  sub: 'From strategy to deployment - we craft high-performance web apps, mobile products, and growth systems for ambitious businesses.',
   secondary: projects.length
     ? { label: 'Our Work', to: '/portfolio' }
     : { label: 'Our Services', to: '/services' },
@@ -83,7 +83,7 @@ export const services: Service[] = [
   },
   {
     title: 'UI/UX Design',
-    desc: 'Digital interfaces that feel intuitive, elegant, and inevitable. We design for maximum conversion, user retention, and brand loyalty — backed by in-depth user research and pixel-precise design systems built in Figma.',
+    desc: 'Digital interfaces that feel intuitive, elegant, and inevitable. We design for maximum conversion, user retention, and brand loyalty - backed by in-depth user research and pixel-precise design systems built in Figma.',
     tools: ['Figma', 'Design Systems'],
     visual: '/assets/service-design.webp',
   },
@@ -98,7 +98,7 @@ export const services: Service[] = [
 export const process = {
   title: 'From idea to launch, systematically.',
   steps: [
-    { no: '01', title: 'Discover', desc: 'We map your goals, constraints, users, and competitive landscape. No assumptions — just sharp strategy.' },
+    { no: '01', title: 'Discover', desc: 'We map your goals, constraints, users, and competitive landscape. No assumptions - just sharp strategy.' },
     { no: '02', title: 'Design', desc: 'Wireframes to high-fidelity in Figma. You shape it before a line of code is written.' },
     { no: '03', title: 'Build', desc: 'Clean, tested, documented code. Two-week sprints. Friday demos. Full transparency.' },
     { no: '04', title: 'Launch', desc: 'Zero-downtime deployment, post-launch monitoring, and KPI benchmarking.' },
@@ -115,11 +115,11 @@ export const about = {
     '2-week sprint cadence with Friday demos',
     'Dedicated PM and dev lead per project',
     'SEO & Core Web Vitals built in from day one',
-    'Transparent pricing — no hidden costs',
+    'Transparent pricing - no hidden costs',
   ],
   pillars: [
-    { title: 'Ship Fast', text: 'Biweekly deliverables, Friday demos. You always know where your product is — no black-box sprints.' },
-    { title: 'Outcome Obsessed', text: 'We measure success by your revenue, retention, and conversion — not our delivery count.' },
+    { title: 'Ship Fast', text: 'Biweekly deliverables, Friday demos. You always know where your product is - no black-box sprints.' },
+    { title: 'Outcome Obsessed', text: 'We measure success by your revenue, retention, and conversion - not our delivery count.' },
     { title: 'Long-Term Partners', text: 'We grow with your business, not just through kickoff.' },
   ],
   values: [
@@ -135,8 +135,8 @@ export const pages = {
     sub: 'From concept to launch, we deliver end-to-end digital solutions that grow your business and delight your users.',
   },
   contact: {
-    title: 'Let’s start building together',
-    sub: 'Tell us about your project and we’ll respond with a tailored plan.',
+    title: 'Letâ€™s start building together',
+    sub: 'Tell us about your project and weâ€™ll respond with a tailored plan.',
     services: ['Web Development', 'Mobile App', 'Digital Marketing', 'UI/UX Design', 'Analytics', 'IT Consulting'],
     timelines: ['Immediately', 'In 1 week', 'In 1 month', 'In 2-3 months'],
   },
@@ -144,11 +144,11 @@ export const pages = {
 }
 
 export const cta = {
-  title: 'Let’s build your next big thing.',
+  title: 'Letâ€™s build your next big thing.',
   sub: 'No templates, no guesswork. Precise digital solutions built for your goals.',
 }
 
-// ─── APPEND THIS TO THE END OF src/content/site.ts ───────────────────────────
+// â”€â”€â”€ APPEND THIS TO THE END OF src/content/site.ts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export type Testimonial = { quote: string; name: string; role: string; company: string }
 export type Stat = { value: number; suffix?: string; label: string }
@@ -158,40 +158,40 @@ export const testimonialsHeading = 'Words from people who trust us'
 // Carried over from the previous akodefy.com. Several quotes cite figures: confirm each with the client.
 export const testimonials: Testimonial[] = [
   {
-    quote: 'Akodefy rebuilt our platform into something we’re genuinely proud to show clients. On time, no drama, real results.',
-    name: 'Rajesh Kumar',
-    role: 'CEO',
-    company: 'Tech Solutions India',
+    quote: 'Akodefy built our Kreativ Studio website from scratch. The attention to detail and the animations they delivered were beyond what we imagined. Every client who visits compliments the site.',
+    name: 'Karthikeyan',
+    role: 'Creative Director',
+    company: 'Kreativ Studio',
   },
   {
-    quote: 'Our e-commerce conversion went from 1.2% to 3.8% in two months. They actually understood our business, not just the code.',
-    name: 'Priya Sharma',
+    quote: 'Our Dumbledore Travel booking platform now converts at 3.6%. Akodefy understood the travel business deeply and built something that genuinely moves people to book.',
+    name: 'Thirunavukkarasu',
     role: 'Founder',
-    company: 'Fashion Hub',
+    company: 'Dumbledore Travel',
   },
   {
-    quote: 'The analytics dashboard surfaced a $1.2M revenue gap we’d been blind to for years. Exceptional ROI.',
-    name: 'Vikram Singh',
-    role: 'Operations Director',
-    company: 'AutoZone India',
-  },
-  {
-    quote: 'Our mobile app launched with a 4.8-star rating. The UI craftsmanship alone justified the whole engagement.',
-    name: 'Anita Verma',
-    role: 'Product Lead',
-    company: 'EduLearn Academy',
-  },
-  {
-    quote: 'Two other agencies failed before Akodefy. They’re the first team that actually moved our revenue needle.',
-    name: 'Mohammed Ali',
+    quote: 'They redesigned our entire Hydra Water Tech product catalogue site in under three weeks. Clean, fast, and our sales team finally has something they are proud to share.',
+    name: 'Senthilkumar',
     role: 'Managing Director',
-    company: 'Gulf Trading Co',
+    company: 'Hydra Water Tech',
   },
   {
-    quote: 'Rebuilt our entire IT infrastructure in 6 weeks, ran staff workshops too. Way beyond the brief.',
-    name: 'Lakshmi N.',
+    quote: 'The Priya Homes Interiors website Akodefy delivered tripled our enquiry rate in 60 days. The portfolio layout they designed showcases our work better than any brochure ever could.',
+    name: 'Vijayalakshmi',
+    role: 'CEO',
+    company: 'Priya Homes Interiors',
+  },
+  {
+    quote: 'Two other agencies failed to deliver a working mobile app. Akodefy launched Galaxy Sports in 8 weeks with a 4.7-star rating on day one. They are the only team we trust now.',
+    name: 'Mohammed Ali',
+    role: 'Operations Director',
+    company: 'Galaxy Sports',
+  },
+  {
+    quote: 'Akodefy rebuilt the RM Infotech platform and integrated our CRM in a single sprint. The handoff documentation was so thorough our in-house team could maintain it immediately.',
+    name: 'Balasubramanian',
     role: 'CTO',
-    company: 'Sri Balaji Motors',
+    company: 'RM Infotech',
   },
 ]
 
@@ -226,7 +226,7 @@ export type PricingSection = { title: string; rows: PricingRow[] }
  */
 export const pricing = {
   title: 'Transparent pricing, no hidden costs',
-  sub: 'Pick the budget range closest to your project and we’ll respond with a tailored plan.',
+  sub: 'Pick the budget range closest to your project and weâ€™ll respond with a tailored plan.',
   info: {
     title: 'Budget',
     points: [
@@ -240,7 +240,7 @@ export const pricing = {
     {
       name: 'Launch',
       blurb: 'A focused build to get you to market',
-      price: '$5k–$10k',
+      price: '$5kâ€“$10k',
       unit: 'per project',
       features: [
         'One service area',
@@ -254,7 +254,7 @@ export const pricing = {
     {
       name: 'Growth',
       blurb: 'For products and campaigns that need to scale',
-      price: '$10k–$25k',
+      price: '$10kâ€“$25k',
       unit: 'per project',
       featured: true,
       features: [
@@ -271,7 +271,7 @@ export const pricing = {
       name: 'Scale',
       blurb: 'Enterprise platforms and multi-service programmes',
       price: '$25k+',
-      unit: 'let’s talk',
+      unit: 'letâ€™s talk',
       features: [
         'Multiple service areas',
         'Enterprise platforms',
@@ -312,7 +312,7 @@ export const pricing = {
     {
       title: 'Budget and next step',
       rows: [
-        { label: 'Budget range (USD)', values: ['$5k–$10k', '$10k–$25k', '$25k+'] },
+        { label: 'Budget range (USD)', values: ['$5kâ€“$10k', '$10kâ€“$25k', '$25k+'] },
         { label: 'A tailored plan from our team', values: [true, true, true] },
         { label: 'Transparent pricing, no hidden costs', values: [true, true, true] },
       ],
@@ -322,7 +322,7 @@ export const pricing = {
   faq: [
     {
       q: 'How do I get an exact quote?',
-      a: 'Tell us about your project through the contact form and we’ll respond with a tailored plan. The ranges above are budget guides.',
+      a: 'Tell us about your project through the contact form and weâ€™ll respond with a tailored plan. The ranges above are budget guides.',
     },
     {
       q: 'Are there any hidden costs?',
@@ -376,11 +376,11 @@ export const careers = {
       },
       {
         label: 'Ownership and trust',
-        text: 'You own your domain. No micromanagement — just clear goals, the resources you need, and the autonomy to get there.',
+        text: 'You own your domain. No micromanagement - just clear goals, the resources you need, and the autonomy to get there.',
       },
       {
         label: 'Transparent growth',
-        text: 'Biannual reviews with clear levelling criteria. No hidden ladders, no politics — just consistent performance and visible progress.',
+        text: 'Biannual reviews with clear levelling criteria. No hidden ladders, no politics - just consistent performance and visible progress.',
       },
     ],
   },
@@ -410,7 +410,7 @@ export const careers = {
       type: 'Full-time',
       experience: '4+ years',
       description:
-        'You will be the technical lead on client-facing web products — from architecture decisions to pixel-level implementation. You care about performance, accessibility, and a codebase that the next person will enjoy inheriting.',
+        'You will be the technical lead on client-facing web products - from architecture decisions to pixel-level implementation. You care about performance, accessibility, and a codebase that the next person will enjoy inheriting.',
       responsibilities: [
         'Architect and build high-performance React and Next.js applications',
         'Set and uphold frontend code quality standards across the team',
@@ -488,7 +488,7 @@ export const careers = {
       type: 'Full-time',
       experience: '3+ years',
       description:
-        'You will build native-quality cross-platform mobile applications that users return to. Performance, polish, and reliability are non-negotiable — you understand how to make React Native feel genuinely native.',
+        'You will build native-quality cross-platform mobile applications that users return to. Performance, polish, and reliability are non-negotiable - you understand how to make React Native feel genuinely native.',
       responsibilities: [
         'Build and ship cross-platform iOS and Android applications in React Native',
         'Implement performant animations and gesture-driven interactions',
@@ -509,9 +509,9 @@ export const careers = {
   ] as JobRole[],
 
   applicationProcess: [
-    { no: '01', title: 'Apply', desc: 'Submit your application below. We read every submission personally — no automated filters.' },
+    { no: '01', title: 'Apply', desc: 'Submit your application below. We read every submission personally - no automated filters.' },
     { no: '02', title: 'Intro call', desc: 'A 30-minute conversation with the hiring manager to learn about each other and align on expectations.' },
-    { no: '03', title: 'Skills review', desc: 'A relevant, paid work sample or technical interview — scoped to two hours maximum.' },
+    { no: '03', title: 'Skills review', desc: 'A relevant, paid work sample or technical interview - scoped to two hours maximum.' },
     { no: '04', title: 'Team meet', desc: 'You meet the team you would work with day-to-day and ask every question you need to ask.' },
     { no: '05', title: 'Offer', desc: 'A clear, transparent offer with no negotiation games. We make our best offer first.' },
   ],

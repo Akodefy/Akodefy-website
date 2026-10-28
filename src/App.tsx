@@ -6,6 +6,7 @@ import Loader from '@/components/layout/Loader'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingCTA from '@/components/layout/FloatingCTA'
+import CookieBanner from '@/components/layout/CookieBanner'
 // Home is eager — it's the landing page, we want it in the initial bundle.
 import Home from '@/pages/Home'
 import { projects } from '@/content/site'
@@ -24,6 +25,9 @@ const CareersPage = lazy(() => import('@/pages/CareersPage'))
 const BlogPage = lazy(() => import('@/pages/BlogPage'))
 const BlogPostPage = lazy(() => import('@/pages/BlogPostPage'))
 const AdminPage = lazy(() => import('@/pages/AdminPage'))
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'))
+const TermsPage   = lazy(() => import('@/pages/TermsPage'))
+const CookiesPage = lazy(() => import('@/pages/CookiesPage'))
 
 const INTRO_KEY = 'akodefy-intro-seen'
 const wipe = [0.76, 0, 0.24, 1] as const
@@ -76,6 +80,9 @@ function Shell() {
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/v1/admin" element={<AdminPage />} />
               <Route path="/v1/admin/*" element={<AdminPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms"   element={<TermsPage />} />
+              <Route path="/cookies" element={<CookiesPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>
@@ -83,6 +90,7 @@ function Shell() {
       </AnimatePresence>
       {!isAdmin && <Footer />}
       {!isAdmin && <FloatingCTA />}
+      {!isAdmin && <CookieBanner />}
     </>
   )
 }

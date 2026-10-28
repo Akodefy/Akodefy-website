@@ -144,7 +144,7 @@ export const pages = {
 }
 
 export const cta = {
-  title: 'Letâ€™s build your next big thing.',
+  title: "Let's build your next big thing.",
   sub: 'No templates, no guesswork. Precise digital solutions built for your goals.',
 }
 

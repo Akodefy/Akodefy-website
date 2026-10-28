@@ -240,7 +240,7 @@ export const pricing = {
     {
       name: 'Launch',
       blurb: 'A focused build to get you to market',
-      price: '$5kâ€“$10k',
+      price: '$5k-$10k',
       unit: 'per project',
       features: [
         'One service area',
@@ -254,7 +254,7 @@ export const pricing = {
     {
       name: 'Growth',
       blurb: 'For products and campaigns that need to scale',
-      price: '$10kâ€“$25k',
+      price: '$10k-$25k',
       unit: 'per project',
       featured: true,
       features: [
@@ -312,7 +312,7 @@ export const pricing = {
     {
       title: 'Budget and next step',
       rows: [
-        { label: 'Budget range (USD)', values: ['$5kâ€“$10k', '$10kâ€“$25k', '$25k+'] },
+        { label: 'Budget range (USD)', values: ['$5k-$10k', '$10k-$25k', '$25k+'] },
         { label: 'A tailored plan from our team', values: [true, true, true] },
         { label: 'Transparent pricing, no hidden costs', values: [true, true, true] },
       ],

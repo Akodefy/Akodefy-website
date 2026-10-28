@@ -11,8 +11,8 @@ import {
   deleteDoc,
   query,
   orderBy,
-  type Timestamp,
   serverTimestamp,
+  type Timestamp,
 } from 'firebase/firestore'
 import { db } from './firebase'
 
@@ -56,7 +56,7 @@ export interface BlogPostInput {
 
 const COLLECTION = 'blog_posts'
 
-/** Fetch every document then filter in JS — avoids composite index requirements */
+/** Fetch all documents ordered by date desc — requires single-field index on 'date' */
 async function fetchAll(): Promise<BlogPost[]> {
   if (!db) throw new Error('Firestore is not initialized')
   const snap = await getDocs(query(collection(db, COLLECTION), orderBy('date', 'desc')))
@@ -118,4 +118,3 @@ export function formatDate(dateString: string): string {
     year: 'numeric',
   })
 }
-

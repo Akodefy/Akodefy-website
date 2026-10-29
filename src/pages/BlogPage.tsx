@@ -1,4 +1,5 @@
-﻿import { useRef, useState, useEffect } from 'react'
+import SEOHead from '@/components/common/SEOHead'
+import { useRef, useState, useEffect } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
 import BlogFeatured from '@/components/blog/BlogFeatured'
 import PostGrid from '@/components/blog/PostGrid'
@@ -101,6 +102,7 @@ export default function BlogPage() {
         </div>
       </header>
 
+      <SEOHead title="Akodefy Journal — Web Development, Design & Growth Insights" description="Expert articles on web performance, UI/UX design, SEO, digital strategy, and engineering from the Akodefy team." canonical="https://www.akodefy.com/blog" />
       {/* Error banner */}
       {state === 'error' && (
         <div className="container-x py-4">

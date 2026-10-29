@@ -1,3 +1,4 @@
+import SEOHead from '@/components/common/SEOHead'
 import { useEffect, useRef } from 'react'
 import { gsap } from '@/lib/gsap'
 import SplitHeading from '@/components/common/SplitHeading'
@@ -105,6 +106,7 @@ export default function PrivacyPage() {
 
   return (
     <>
+      <SEOHead title="Privacy Policy — Akodefy" description="How Akodefy handles your personal data. We use only essential cookies and never sell your data to third parties." canonical="https://www.akodefy.com/privacy" />
       <ProgressBar />
       <PageHero title="Privacy Policy" sub="How we handle your data — plainly explained." />
 

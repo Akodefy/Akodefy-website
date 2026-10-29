@@ -1,3 +1,4 @@
+import SEOHead from '@/components/common/SEOHead'
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/gsap'
 import SplitHeading from '@/components/common/SplitHeading'
@@ -105,6 +106,7 @@ export default function TermsPage() {
 
   return (
     <>
+      <SEOHead title="Terms of Use — Akodefy" description="Terms governing your use of the Akodefy website. Governed by Indian law, courts of Tamil Nadu." canonical="https://www.akodefy.com/terms" />
       <ProgressBar />
       <PageHero title="Terms of Use" sub="The ground rules for using this website." />
 

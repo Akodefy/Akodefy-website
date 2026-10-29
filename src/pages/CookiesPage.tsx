@@ -1,3 +1,4 @@
+import SEOHead from '@/components/common/SEOHead'
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from '@/lib/gsap'
 import SplitHeading from '@/components/common/SplitHeading'
@@ -94,6 +95,7 @@ export default function CookiesPage() {
 
   return (
     <>
+      <SEOHead title="Cookie Policy — Akodefy" description="Akodefy uses only essential session cookies. No tracking, no advertising cookies, no third-party profiling." canonical="https://www.akodefy.com/cookies" />
       <ProgressBar />
       <PageHero title="Cookie Policy" sub="A minimal cookie setup — here is exactly what we use and why." />
 

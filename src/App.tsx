@@ -40,7 +40,7 @@ function Page({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <main>
+    <main id="main-content">
       {children}
       <motion.div
         aria-hidden

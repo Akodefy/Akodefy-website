@@ -1,3 +1,4 @@
+import SEOHead from '@/components/common/SEOHead'
 import { useState, type FormEvent } from 'react'
 import PageHero from '@/components/common/PageHero'
 import { Button } from '@/components/ui/button'
@@ -84,6 +85,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <SEOHead title="Contact Akodefy — Start Your Project | Coimbatore" description="Get in touch with Akodefy to discuss your web development, mobile app, or digital marketing project. Based in Coimbatore, Tamil Nadu." canonical="https://www.akodefy.com/contact" />
       <PageHero title={pages.contact.title} sub={pages.contact.sub} />
 
       <section className="bg-paper pb-28 md:pb-44">

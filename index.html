@@ -4,28 +4,108 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/logo/icon.png" />
     <link rel="apple-touch-icon" href="/assets/logo/icon.png" />
-    <!-- Preload the hero image so it doesn't block LCP -->
     <link rel="preload" as="image" href="/assets/hero-frame.webp" type="image/webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Akodefy — IT Solutions & Technology Services</title>
-    <meta name="description" content="Transform your business with cutting-edge IT solutions and digital marketing services. Expert services in web development, mobile app development, digital marketing, and growth analytics." />
-    <meta property="og:title" content="Akodefy — IT Solutions & Technology Services" />
-    <meta property="og:description" content="Transform your business with cutting-edge IT solutions and digital marketing services." />
+
+    <!-- Primary meta -->
+    <title>Akodefy — Web Development, Mobile Apps & Digital Marketing | Coimbatore</title>
+    <meta name="description" content="Akodefy is a technology company in Coimbatore building high-performance web apps, mobile applications, and digital marketing systems for ambitious businesses." />
+    <link rel="canonical" href="https://www.akodefy.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Akodefy — Web Development, Mobile Apps & Digital Marketing" />
+    <meta property="og:description" content="Akodefy is a technology company in Coimbatore building high-performance web apps, mobile applications, and digital marketing systems for ambitious businesses." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Akodefy" />
-    <meta property="og:url" content="https://www.akodefy.com" />
+    <meta property="og:url" content="https://www.akodefy.com/" />
     <meta property="og:image" content="https://www.akodefy.com/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Akodefy — IT Solutions & Technology Services" />
+    <meta property="og:image:alt" content="Akodefy — Web Development & Digital Marketing Coimbatore" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Akodefy — Web Development, Mobile Apps & Digital Marketing" />
+    <meta name="twitter:description" content="High-performance web apps, mobile applications, and digital marketing for ambitious businesses. Based in Coimbatore, India." />
     <meta name="twitter:image" content="https://www.akodefy.com/assets/og-image.png" />
+
+    <!-- Geo & language -->
+    <meta name="geo.region" content="IN-TN" />
+    <meta name="geo.placename" content="Coimbatore" />
+    <meta name="language" content="English" />
+
     <meta name="theme-color" content="#072A1E" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Organization JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.akodefy.com/#organization",
+      "name": "Akodefy",
+      "legalName": "Akodefy Info Tech",
+      "url": "https://www.akodefy.com",
+      "logo": "https://www.akodefy.com/assets/logo/icon.png",
+      "description": "Akodefy is a technology company building high-performance web applications, mobile apps, and digital marketing systems for ambitious businesses.",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Coimbatore, Tamil Nadu, India"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-90804-45315",
+        "contactType": "customer service",
+        "email": "hello@akodefy.com",
+        "availableLanguage": ["English", "Tamil"]
+      },
+      "sameAs": [
+        "https://instagram.com/akodefyinfotech",
+        "https://linkedin.com/company/ak-edumasters",
+        "https://wa.me/919080445315"
+      ],
+      "knowsAbout": [
+        "Web Development",
+        "Mobile App Development",
+        "Digital Marketing",
+        "UI/UX Design",
+        "Growth Analytics",
+        "IT Consulting"
+      ]
+    }
+    </script>
+
+    <!-- WebSite JSON-LD (enables Sitelinks search box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.akodefy.com/#website",
+      "url": "https://www.akodefy.com",
+      "name": "Akodefy",
+      "description": "Web development, mobile apps, and digital marketing for ambitious businesses.",
+      "publisher": {
+        "@id": "https://www.akodefy.com/#organization"
+      },
+      "inLanguage": "en-IN"
+    }
+    </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- Skip to main content — accessibility + agent nav. Inline style hides it before CSS loads. -->
+    <a href="#main-content" class="skip-link" style="position:absolute;top:-100%;left:1rem;z-index:9999;padding:.4rem 1rem;background:#2BFF88;color:#072A1E;font-weight:600;font-size:.875rem;border-radius:0 0 .5rem .5rem;text-decoration:none;outline-offset:2px;">Skip to main content</a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -1,4 +1,5 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import SEOHead from '@/components/common/SEOHead'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { getAllPosts, getPostBySlug, type BlogPost } from '@/lib/blogService'
@@ -158,7 +159,24 @@ export default function BlogPostPage() {
 
   return (
     <>
-      <ProgressBar />
+      {post && (
+        <SEOHead
+          title={`${post.title} — Akodefy Journal`}
+          description={post.excerpt}
+          canonical={`https://www.akodefy.com/blog/${post.slug}`}
+          ogType="article"
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": post.title,
+            "description": post.excerpt,
+            "datePublished": post.date,
+            "publisher": { "@id": "https://www.akodefy.com/#organization" },
+            "mainEntityOfPage": `https://www.akodefy.com/blog/${post.slug}`,
+            "image": post.cover,
+          }}
+        />
+      )}      <ProgressBar />
       <div ref={root} className="bg-paper">
 
         {/* Full-bleed cover */}
